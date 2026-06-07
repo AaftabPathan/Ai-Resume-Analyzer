@@ -27,46 +27,75 @@ interface NavItem {
     MatMenuModule,
   ],
   template: `
-    <div [class.dark]="isDarkMode()" class="min-h-screen flex bg-slate-950 text-slate-100 transition-colors duration-200">
-      
+    <div
+      [class.dark]="isDarkMode()"
+      class="min-h-screen flex bg-slate-950 text-slate-100 transition-colors duration-200"
+    >
       <!-- Side Navigation Panel -->
-      <aside [class.w-64]="isSidebarOpen()" [class.w-20]="!isSidebarOpen()" 
-             class="fixed md:static inset-y-0 left-0 z-40 bg-slate-900/40 border-r border-slate-800/40 flex flex-col justify-between transition-all duration-300 backdrop-blur-md">
-        
+      <aside
+        [class.w-64]="isSidebarOpen()"
+        [class.w-20]="!isSidebarOpen()"
+        class="fixed md:static inset-y-0 left-0 z-40 bg-slate-900/40 border-r border-slate-800/40 flex flex-col justify-between transition-all duration-300 backdrop-blur-md"
+      >
         <div>
           <!-- Sidebar Header Logo -->
           <div class="h-16 flex items-center px-4 border-b border-slate-800/30 justify-between">
             <div class="flex items-center space-x-3 overflow-hidden">
-              <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-violet-600 to-indigo-600 flex items-center justify-center font-bold text-xs shadow-md shrink-0">
+              <div
+                class="w-8 h-8 rounded-lg bg-gradient-to-tr from-violet-600 to-indigo-600 flex items-center justify-center font-bold text-xs shadow-md shrink-0"
+              >
                 AR
               </div>
-              <span *ngIf="isSidebarOpen()" class="font-bold tracking-tight text-sm text-slate-200 truncate">
+              <span
+                *ngIf="isSidebarOpen()"
+                class="font-bold tracking-tight text-sm text-slate-200 truncate"
+              >
                 ResumeAI Panel
               </span>
             </div>
-            <button (click)="toggleSidebar()" class="text-slate-400 hover:text-white hidden md:block">
+            <button
+              (click)="toggleSidebar()"
+              class="text-slate-400 hover:text-white hidden md:block"
+            >
               <mat-icon>{{ isSidebarOpen() ? 'menu_open' : 'menu' }}</mat-icon>
             </button>
           </div>
 
           <!-- Nav Items Links -->
           <nav class="p-3 space-y-1.5">
-            <a *ngFor="let item of filteredNavItems()" 
-               [routerLink]="item.route" 
-               routerLinkActive="bg-violet-600/10 border-l-4 border-violet-500 text-white font-semibold shadow-md shadow-violet-950/20"
-               [routerLinkActiveOptions]="{exact: item.route === '/dashboard'}"
-               class="flex items-center p-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/40 transition-all duration-200 group">
-              <mat-icon class="shrink-0 text-xl group-hover:scale-110 transition-transform duration-200">{{ item.icon }}</mat-icon>
-              <span *ngIf="isSidebarOpen()" class="ml-4 text-sm tracking-wide transition-opacity duration-300">{{ item.label }}</span>
+            <a
+              *ngFor="let item of filteredNavItems()"
+              [routerLink]="item.route"
+              routerLinkActive="bg-violet-600/10 border-l-4 border-violet-500 text-white font-semibold shadow-md shadow-violet-950/20"
+              [routerLinkActiveOptions]="{ exact: item.route === '/dashboard' }"
+              class="flex items-center p-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/40 transition-all duration-200 group"
+            >
+              <mat-icon
+                class="shrink-0 text-xl group-hover:scale-110 transition-transform duration-200"
+                >{{ item.icon }}</mat-icon
+              >
+              <span
+                *ngIf="isSidebarOpen()"
+                class="ml-4 text-sm tracking-wide transition-opacity duration-300"
+                >{{ item.label }}</span
+              >
             </a>
           </nav>
         </div>
 
         <!-- Sidebar Footer Profile -->
         <div class="p-3 border-t border-slate-800/30">
-          <div class="flex items-center p-2 rounded-xl bg-slate-950/30 border border-slate-800/40 overflow-hidden">
-            <img [src]="user()?.avatarUrl || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&h=80'" 
-                 alt="User Profile" class="w-8 h-8 rounded-lg border border-slate-850 shrink-0">
+          <div
+            class="flex items-center p-2 rounded-xl bg-slate-950/30 border border-slate-800/40 overflow-hidden"
+          >
+            <img
+              [src]="
+                user()?.avatarUrl ||
+                'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&h=80'
+              "
+              alt="User Profile"
+              class="w-8 h-8 rounded-lg border border-slate-850 shrink-0"
+            />
             <div *ngIf="isSidebarOpen()" class="ml-3 overflow-hidden">
               <h4 class="text-xs font-semibold text-slate-200 truncate">{{ user()?.name }}</h4>
               <span class="text-[10px] text-slate-500 capitalize">{{ user()?.role }}</span>
@@ -77,9 +106,10 @@ interface NavItem {
 
       <!-- Main Shell Area -->
       <div class="flex-1 flex flex-col min-w-0 relative">
-        
         <!-- Header Bar -->
-        <header class="h-16 border-b border-slate-800/30 bg-slate-950/45 backdrop-blur-md sticky top-0 z-30 px-6 flex items-center justify-between">
+        <header
+          class="h-16 border-b border-slate-800/30 bg-slate-950/45 backdrop-blur-md sticky top-0 z-30 px-6 flex items-center justify-between"
+        >
           <div class="flex items-center space-x-4">
             <button (click)="toggleSidebar()" class="text-slate-400 hover:text-white md:hidden">
               <mat-icon>menu</mat-icon>
@@ -96,26 +126,44 @@ interface NavItem {
             </button>
 
             <!-- Alerts trigger -->
-            <button [matMenuTriggerFor]="notifMenu" mat-icon-button class="text-slate-400 hover:text-white relative">
+            <button
+              [matMenuTriggerFor]="notifMenu"
+              mat-icon-button
+              class="text-slate-400 hover:text-white relative"
+            >
               <mat-icon>notifications</mat-icon>
-              <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-violet-500 animate-pulse"></span>
+              <span
+                class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-violet-500 animate-pulse"
+              ></span>
             </button>
             <mat-menu #notifMenu="matMenu" class="dark-menu">
-              <div class="px-4 py-2 border-b border-slate-800 text-xs font-bold text-slate-400 uppercase tracking-wider">
+              <div
+                class="px-4 py-2 border-b border-slate-800 text-xs font-bold text-slate-400 uppercase tracking-wider"
+              >
                 Notifications
               </div>
               <button mat-menu-item class="!text-sm text-slate-300">
                 <span class="font-semibold text-white">System:</span> AI Gemini Engine Active.
               </button>
               <button mat-menu-item class="!text-sm text-slate-300">
-                <span class="font-semibold text-white">Parser:</span> Sample resume compiled successfully.
+                <span class="font-semibold text-white">Parser:</span> Sample resume compiled
+                successfully.
               </button>
             </mat-menu>
 
             <!-- Profile Menu -->
-            <button [matMenuTriggerFor]="profileMenu" class="flex items-center space-x-2 border border-slate-800/80 hover:border-slate-700 bg-slate-900/40 px-2 py-1 rounded-xl transition-all duration-200">
-              <img [src]="user()?.avatarUrl || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&h=80'" 
-                   alt="User Profile" class="w-6 h-6 rounded-md border border-slate-700">/>
+            <button
+              [matMenuTriggerFor]="profileMenu"
+              class="flex items-center space-x-2 border border-slate-800/80 hover:border-slate-700 bg-slate-900/40 px-2 py-1 rounded-xl transition-all duration-200"
+            >
+              <img
+                [src]="
+                  user()?.avatarUrl ||
+                  'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&h=80'
+                "
+                alt="User Profile"
+                class="w-6 h-6 rounded-md border border-slate-700"
+              />/>
               <mat-icon class="text-slate-400 !text-sm flex items-center justify-center shrink-0"
                 >arrow_drop_down</mat-icon
               >

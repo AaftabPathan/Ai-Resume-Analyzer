@@ -57,7 +57,10 @@ interface BuilderData {
         </div>
 
         <div class="flex flex-wrap items-center gap-4 w-full lg:w-auto">
-          <mat-form-field appearance="outline" class="dark-form-field !text-xs shrink-0 w-full sm:w-48">
+          <mat-form-field
+            appearance="outline"
+            class="dark-form-field !text-xs shrink-0 w-full sm:w-48"
+          >
             <mat-label>Template Style</mat-label>
             <mat-select [(ngModel)]="activeTemplate">
               <mat-option value="ats">ATS Friendly</mat-option>
@@ -94,7 +97,9 @@ interface BuilderData {
           <mat-card
             class="!bg-slate-900/40 !border !border-slate-800/80 !rounded-3xl !p-6 shadow-xl glass-card"
           >
-            <h3 class="text-sm font-bold text-slate-200 mb-6 font-outfit flex items-center space-x-2">
+            <h3
+              class="text-sm font-bold text-slate-200 mb-6 font-outfit flex items-center space-x-2"
+            >
               <mat-icon class="text-violet-400">person_outline</mat-icon>
               <span>Contact & Summary Details</span>
             </h3>

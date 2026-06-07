@@ -54,12 +54,16 @@ import { CareerService, SkillGapResponse } from '../../core/services/career.serv
             AI Career Mentor Chatbot
           </h1>
           <p class="text-slate-400 text-xs mt-1">
-            Acquire resume-aware mentorship, custom transition roadmaps, and target certification pathways.
+            Acquire resume-aware mentorship, custom transition roadmaps, and target certification
+            pathways.
           </p>
         </div>
 
         <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
-          <mat-form-field appearance="outline" class="dark-form-field !text-xs shrink-0 w-full md:w-60">
+          <mat-form-field
+            appearance="outline"
+            class="dark-form-field !text-xs shrink-0 w-full md:w-60"
+          >
             <mat-label>Active Resume Context</mat-label>
             <mat-select [(ngModel)]="selectedResumeId" (selectionChange)="onContextResumeChanged()">
               <mat-option *ngFor="let res of resumes()" [value]="res.id">{{
@@ -97,18 +101,23 @@ import { CareerService, SkillGapResponse } from '../../core/services/career.serv
               <div
                 *ngFor="let chat of threads()"
                 (click)="selectThread(chat.id)"
-                [class.bg-violet-950\/20]="activeThreadId() === chat.id"
-                [class.border-violet-500\/40]="activeThreadId() === chat.id"
-                [class.bg-slate-800\/20]="activeThreadId() !== chat.id"
+                [class.bg-violet-950/20]="activeThreadId() === chat.id"
+                [class.border-violet-500/40]="activeThreadId() === chat.id"
+                [class.bg-slate-800/20]="activeThreadId() !== chat.id"
                 class="p-3.5 border border-slate-850 rounded-2xl hover:bg-slate-800/40 cursor-pointer transition-all flex items-center justify-between group overflow-hidden"
               >
                 <div class="overflow-hidden shrink-0 flex-1 pr-2">
-                  <h4 class="text-xs font-bold text-slate-200 group-hover:text-white truncate transition-colors">{{ chat.title }}</h4>
+                  <h4
+                    class="text-xs font-bold text-slate-200 group-hover:text-white truncate transition-colors"
+                  >
+                    {{ chat.title }}
+                  </h4>
                   <span class="text-[9px] text-slate-500 font-medium">{{
                     chat.created_at | date: 'shortTime'
                   }}</span>
                 </div>
-                <mat-icon class="text-slate-500 group-hover:text-slate-300 transition-colors !text-xs w-4 h-4 flex items-center justify-center"
+                <mat-icon
+                  class="text-slate-500 group-hover:text-slate-300 transition-colors !text-xs w-4 h-4 flex items-center justify-center"
                   >chevron_right</mat-icon
                 >
               </div>
@@ -187,7 +196,8 @@ import { CareerService, SkillGapResponse } from '../../core/services/career.serv
                   How can I help you build your career?
                 </h4>
                 <p class="text-xs text-slate-500 leading-relaxed">
-                  Ask me about custom technical roadmaps, target certificates, and projects based on your current resume skills.
+                  Ask me about custom technical roadmaps, target certificates, and projects based on
+                  your current resume skills.
                 </p>
               </div>
 
@@ -203,7 +213,7 @@ import { CareerService, SkillGapResponse } from '../../core/services/career.serv
                   [class.to-indigo-600]="msg.sender === 'user'"
                   [class.text-white]="msg.sender === 'user'"
                   [class.rounded-tr-none]="msg.sender === 'user'"
-                  [class.bg-slate-900\/65]="msg.sender !== 'user'"
+                  [class.bg-slate-900/65]="msg.sender !== 'user'"
                   [class.border]="msg.sender !== 'user'"
                   [class.border-slate-800]="msg.sender !== 'user'"
                   [class.text-slate-200]="msg.sender !== 'user'"
@@ -218,7 +228,10 @@ import { CareerService, SkillGapResponse } from '../../core/services/career.serv
                     {{ msg.sender === 'user' ? 'You' : 'AI Career Mentor' }}
                   </span>
 
-                  <div [innerHTML]="formatMessageText(msg.message_text)" class="prose prose-invert max-w-none text-xs leading-relaxed font-medium"></div>
+                  <div
+                    [innerHTML]="formatMessageText(msg.message_text)"
+                    class="prose prose-invert max-w-none text-xs leading-relaxed font-medium"
+                  ></div>
                 </div>
               </div>
 
@@ -331,7 +344,8 @@ import { CareerService, SkillGapResponse } from '../../core/services/career.serv
 
             <!-- Generated Roadmap Preview -->
             <div *ngIf="activeRoadmap()" class="border-t border-slate-800/80 pt-5 mt-2 space-y-4">
-              <span class="text-[9px] font-bold text-violet-400 uppercase tracking-widest block font-outfit"
+              <span
+                class="text-[9px] font-bold text-violet-400 uppercase tracking-widest block font-outfit"
                 >{{ activeRoadmap()?.span }}-Day Roadmap Plan</span
               >
 
@@ -382,7 +396,9 @@ import { CareerService, SkillGapResponse } from '../../core/services/career.serv
                   >verified</mat-icon
                 >
                 <div class="overflow-hidden">
-                  <h4 class="text-[10px] font-bold text-slate-200 truncate font-outfit">{{ cert.name }}</h4>
+                  <h4 class="text-[10px] font-bold text-slate-200 truncate font-outfit">
+                    {{ cert.name }}
+                  </h4>
                   <span class="text-[8px] text-slate-500 font-semibold"
                     >{{ cert.provider }} • {{ cert.level }}</span
                   >

@@ -38,7 +38,9 @@ import {
         class="max-w-2xl mx-auto mt-16 p-12 glass-card glass-card-hover border-2 border-dashed border-slate-700/50 rounded-3xl text-center space-y-8 relative overflow-hidden animate-border-glow"
       >
         <!-- Top glowing ambient backdrop -->
-        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-64 h-64 bg-violet-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div
+          class="absolute -top-24 left-1/2 -translate-x-1/2 w-64 h-64 bg-violet-600/20 rounded-full blur-3xl pointer-events-none"
+        ></div>
 
         <mat-progress-bar
           *ngIf="isUploading()"
@@ -52,11 +54,14 @@ import {
         >
           📂
         </div>
-        
+
         <div class="space-y-2">
-          <h2 class="text-3xl font-extrabold tracking-tight text-white font-outfit">Upload Your Resume</h2>
+          <h2 class="text-3xl font-extrabold tracking-tight text-white font-outfit">
+            Upload Your Resume
+          </h2>
           <p class="text-slate-400 text-sm max-w-md mx-auto leading-relaxed">
-            Upload your PDF, DOC, or DOCX resume. Our AI agent will audit structure, identify missing keywords, and grade ATS compatibility.
+            Upload your PDF, DOC, or DOCX resume. Our AI agent will audit structure, identify
+            missing keywords, and grade ATS compatibility.
           </p>
         </div>
 
@@ -73,7 +78,9 @@ import {
               class="hidden"
             />
           </label>
-          <span class="text-xs text-slate-500 font-medium">Supported formats: PDF, DOC, DOCX up to 5MB</span>
+          <span class="text-xs text-slate-500 font-medium"
+            >Supported formats: PDF, DOC, DOCX up to 5MB</span
+          >
         </div>
 
         <div
@@ -94,8 +101,12 @@ import {
             class="!bg-slate-900/40 !border !border-slate-800/80 !rounded-3xl !p-6 shadow-xl relative overflow-hidden glass-card"
           >
             <!-- Glowing accent dots -->
-            <div class="absolute -top-12 -right-12 w-24 h-24 bg-violet-600/10 rounded-full blur-2xl"></div>
-            <div class="absolute -bottom-12 -left-12 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl"></div>
+            <div
+              class="absolute -top-12 -right-12 w-24 h-24 bg-violet-600/10 rounded-full blur-2xl"
+            ></div>
+            <div
+              class="absolute -bottom-12 -left-12 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl"
+            ></div>
 
             <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 font-outfit">
               ATS Compatibility Rating
@@ -136,8 +147,11 @@ import {
                   </defs>
                 </svg>
                 <div class="text-center z-10">
-                  <span class="text-5xl font-extrabold tracking-tight text-white font-outfit">{{ atsScore() }}</span>
-                  <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1"
+                  <span class="text-5xl font-extrabold tracking-tight text-white font-outfit">{{
+                    atsScore()
+                  }}</span>
+                  <span
+                    class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1"
                     >Overall Score</span
                   >
                 </div>
@@ -151,7 +165,10 @@ import {
                     <span class="text-emerald-400 font-mono">{{ formatScore() }}%</span>
                   </div>
                   <div class="h-1.5 w-full bg-slate-950 rounded-full overflow-hidden">
-                    <div class="h-full bg-emerald-500 rounded-full" [style.width.%]="formatScore()"></div>
+                    <div
+                      class="h-full bg-emerald-500 rounded-full"
+                      [style.width.%]="formatScore()"
+                    ></div>
                   </div>
                 </div>
 
@@ -161,7 +178,10 @@ import {
                     <span class="text-violet-400 font-mono">{{ keywordScore() }}%</span>
                   </div>
                   <div class="h-1.5 w-full bg-slate-950 rounded-full overflow-hidden">
-                    <div class="h-full bg-violet-500 rounded-full" [style.width.%]="keywordScore()"></div>
+                    <div
+                      class="h-full bg-violet-500 rounded-full"
+                      [style.width.%]="keywordScore()"
+                    ></div>
                   </div>
                 </div>
 
@@ -171,7 +191,10 @@ import {
                     <span class="text-indigo-400 font-mono">{{ expScore() }}%</span>
                   </div>
                   <div class="h-1.5 w-full bg-slate-950 rounded-full overflow-hidden">
-                    <div class="h-full bg-indigo-500 rounded-full" [style.width.%]="expScore()"></div>
+                    <div
+                      class="h-full bg-indigo-500 rounded-full"
+                      [style.width.%]="expScore()"
+                    ></div>
                   </div>
                 </div>
 
@@ -181,7 +204,10 @@ import {
                     <span class="text-teal-400 font-mono">{{ skillScore() }}%</span>
                   </div>
                   <div class="h-1.5 w-full bg-slate-950 rounded-full overflow-hidden">
-                    <div class="h-full bg-teal-500 rounded-full" [style.width.%]="skillScore()"></div>
+                    <div
+                      class="h-full bg-teal-500 rounded-full"
+                      [style.width.%]="skillScore()"
+                    ></div>
                   </div>
                 </div>
               </div>
@@ -200,24 +226,29 @@ import {
                 *ngFor="let ver of versionsList()"
                 (click)="switchVersion(ver.versionNumber)"
                 [class.border-violet-500]="activeVersion() === ver.versionNumber"
-                [class.bg-slate-800\/20]="activeVersion() !== ver.versionNumber"
-                [class.bg-violet-950\/20]="activeVersion() === ver.versionNumber"
+                [class.bg-slate-800/20]="activeVersion() !== ver.versionNumber"
+                [class.bg-violet-950/20]="activeVersion() === ver.versionNumber"
                 class="p-3.5 border border-slate-800 rounded-2xl hover:bg-slate-800/40 cursor-pointer transition-all flex items-center justify-between group"
               >
                 <div>
-                  <h4 class="text-xs font-bold text-slate-200 group-hover:text-white transition-colors">Version {{ ver.versionNumber }}</h4>
+                  <h4
+                    class="text-xs font-bold text-slate-200 group-hover:text-white transition-colors"
+                  >
+                    Version {{ ver.versionNumber }}
+                  </h4>
                   <span class="text-[10px] text-slate-500"
                     >{{ ver.createdAt | date: 'shortTime' }} on
                     {{ ver.createdAt | date: 'mediumDate' }}</span
                   >
                 </div>
-                <span 
-                  [class.bg-violet-900\/60]="activeVersion() === ver.versionNumber"
+                <span
+                  [class.bg-violet-900/60]="activeVersion() === ver.versionNumber"
                   [class.text-violet-300]="activeVersion() === ver.versionNumber"
                   [class.bg-slate-800]="activeVersion() !== ver.versionNumber"
                   [class.text-slate-400]="activeVersion() !== ver.versionNumber"
                   class="text-[10px] font-mono px-2.5 py-1 rounded-lg transition-colors"
-                >v{{ ver.versionNumber }}</span>
+                  >v{{ ver.versionNumber }}</span
+                >
               </div>
             </div>
 
@@ -240,9 +271,13 @@ import {
                 <!-- Weakness & Keyword overlay -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <!-- Missing Keywords -->
-                  <div class="p-6 rounded-2xl bg-slate-900/35 border border-slate-800/80 glass-card">
+                  <div
+                    class="p-6 rounded-2xl bg-slate-900/35 border border-slate-800/80 glass-card"
+                  >
                     <h4 class="text-sm font-bold text-slate-200 mb-4 flex items-center space-x-2">
-                      <mat-icon class="text-violet-400 !w-5 !h-5 !text-[20px]">label_important</mat-icon>
+                      <mat-icon class="text-violet-400 !w-5 !h-5 !text-[20px]"
+                        >label_important</mat-icon
+                      >
                       <span class="font-outfit">Missing Keywords</span>
                     </h4>
                     <div class="flex flex-wrap gap-2">
@@ -252,14 +287,19 @@ import {
                       >
                         + {{ kw }}
                       </span>
-                      <div *ngIf="missingKeywords().length === 0" class="text-xs text-slate-500 py-2">
+                      <div
+                        *ngIf="missingKeywords().length === 0"
+                        class="text-xs text-slate-500 py-2"
+                      >
                         All key role-aligned keywords are listed in your resume profile.
                       </div>
                     </div>
                   </div>
 
                   <!-- Resume Weaknesses -->
-                  <div class="p-6 rounded-2xl bg-slate-900/35 border border-slate-800/80 glass-card">
+                  <div
+                    class="p-6 rounded-2xl bg-slate-900/35 border border-slate-800/80 glass-card"
+                  >
                     <h4 class="text-sm font-bold text-slate-200 mb-4 flex items-center space-x-2">
                       <mat-icon class="text-rose-400 !w-5 !h-5 !text-[20px]">warning</mat-icon>
                       <span class="font-outfit">Identified Weaknesses</span>
@@ -269,7 +309,10 @@ import {
                         <span class="text-rose-400 mt-0.5 font-bold shrink-0">•</span>
                         <span>{{ wk }}</span>
                       </li>
-                      <li *ngIf="weaknesses().length === 0" class="text-slate-500 flex items-center space-x-2 py-2">
+                      <li
+                        *ngIf="weaknesses().length === 0"
+                        class="text-slate-500 flex items-center space-x-2 py-2"
+                      >
                         <mat-icon class="text-emerald-400 text-sm">check_circle</mat-icon>
                         <span>No critical formatting or structural issues found.</span>
                       </li>
@@ -281,14 +324,18 @@ import {
                 <mat-card
                   class="!bg-slate-900/40 !border !border-slate-800/80 !rounded-3xl !p-6 shadow-xl glass-card"
                 >
-                  <h4 class="text-sm font-bold text-slate-200 mb-6 font-outfit">Detailed Section Audit</h4>
+                  <h4 class="text-sm font-bold text-slate-200 mb-6 font-outfit">
+                    Detailed Section Audit
+                  </h4>
 
                   <div class="space-y-6">
                     <!-- Formatting feedback -->
                     <div class="border-b border-slate-800/60 pb-5">
                       <div class="flex items-center justify-between text-xs font-bold mb-2">
                         <span class="text-slate-300 flex items-center space-x-2">
-                          <mat-icon class="text-emerald-400 !w-4 !h-4 !text-[16px]">text_fields</mat-icon>
+                          <mat-icon class="text-emerald-400 !w-4 !h-4 !text-[16px]"
+                            >text_fields</mat-icon
+                          >
                           <span>Layout & Formatting</span>
                         </span>
                         <span class="text-slate-400">{{ formatScore() }}/100</span>
@@ -302,7 +349,9 @@ import {
                     <div class="border-b border-slate-800/60 pb-5">
                       <div class="flex items-center justify-between text-xs font-bold mb-2">
                         <span class="text-slate-300 flex items-center space-x-2">
-                          <mat-icon class="text-violet-400 !w-4 !h-4 !text-[16px]">vpn_key</mat-icon>
+                          <mat-icon class="text-violet-400 !w-4 !h-4 !text-[16px]"
+                            >vpn_key</mat-icon
+                          >
                           <span>Keyword Density</span>
                         </span>
                         <span class="text-slate-400">{{ keywordScore() }}/100</span>
@@ -316,7 +365,9 @@ import {
                     <div>
                       <div class="flex items-center justify-between text-xs font-bold mb-2">
                         <span class="text-slate-300 flex items-center space-x-2">
-                          <mat-icon class="text-indigo-400 !w-4 !h-4 !text-[16px]">work_outline</mat-icon>
+                          <mat-icon class="text-indigo-400 !w-4 !h-4 !text-[16px]"
+                            >work_outline</mat-icon
+                          >
                           <span>Experience Framing</span>
                         </span>
                         <span class="text-slate-400">{{ expScore() }}/100</span>
@@ -337,7 +388,9 @@ import {
                   class="!bg-slate-900/40 !border !border-slate-800/80 !rounded-3xl !p-6 shadow-xl glass-card"
                 >
                   <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-base font-bold text-slate-200 font-outfit">Personal Information</h3>
+                    <h3 class="text-base font-bold text-slate-200 font-outfit">
+                      Personal Information
+                    </h3>
                     <button
                       (click)="saveResume()"
                       mat-raised-button
@@ -375,7 +428,9 @@ import {
                 <mat-card
                   class="!bg-slate-900/40 !border !border-slate-800/80 !rounded-3xl !p-6 shadow-xl glass-card"
                 >
-                  <h3 class="text-base font-bold text-slate-200 mb-6 font-outfit">Technical Skills</h3>
+                  <h3 class="text-base font-bold text-slate-200 mb-6 font-outfit">
+                    Technical Skills
+                  </h3>
                   <div class="space-y-4">
                     <div class="p-5 rounded-2xl border border-slate-800 bg-slate-950/40">
                       <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">
@@ -417,14 +472,17 @@ import {
                   class="!bg-slate-900/40 !border !border-slate-800/80 !rounded-3xl !p-6 shadow-xl glass-card"
                   *ngIf="suggestions()"
                 >
-                  <h4 class="text-sm font-bold text-slate-200 mb-6 font-outfit flex items-center space-x-2">
+                  <h4
+                    class="text-sm font-bold text-slate-200 mb-6 font-outfit flex items-center space-x-2"
+                  >
                     <mat-icon class="text-violet-400">auto_awesome</mat-icon>
                     <span>AI Professional Summary Optimization</span>
                   </h4>
 
                   <div class="space-y-5">
                     <div>
-                      <span class="text-[10px] font-bold text-rose-400 uppercase tracking-widest bg-rose-950/35 border border-rose-900/50 px-2 py-0.5 rounded"
+                      <span
+                        class="text-[10px] font-bold text-rose-400 uppercase tracking-widest bg-rose-950/35 border border-rose-900/50 px-2 py-0.5 rounded"
                         >Original Summary</span
                       >
                       <div
@@ -434,7 +492,8 @@ import {
                       </div>
                     </div>
                     <div>
-                      <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest bg-emerald-950/35 border border-emerald-900/50 px-2 py-0.5 rounded"
+                      <span
+                        class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest bg-emerald-950/35 border border-emerald-900/50 px-2 py-0.5 rounded"
                         >Optimized Summary</span
                       >
                       <div
@@ -451,7 +510,9 @@ import {
                   class="!bg-slate-900/40 !border !border-slate-800/80 !rounded-3xl !p-6 shadow-xl glass-card"
                   *ngIf="suggestions()"
                 >
-                  <h4 class="text-sm font-bold text-slate-200 mb-6 font-outfit flex items-center space-x-2">
+                  <h4
+                    class="text-sm font-bold text-slate-200 mb-6 font-outfit flex items-center space-x-2"
+                  >
                     <mat-icon class="text-emerald-400">trending_up</mat-icon>
                     <span>AI Experience Phrasing (STAR Metric Upgrades)</span>
                   </h4>

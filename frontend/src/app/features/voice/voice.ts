@@ -45,12 +45,16 @@ import {
             AI Voice Interview Simulator
           </h1>
           <p class="text-slate-400 text-xs mt-1">
-            Simulate realistic, role-specific job interviews with real-time speech evaluation and multi-dimensional analytics.
+            Simulate realistic, role-specific job interviews with real-time speech evaluation and
+            multi-dimensional analytics.
           </p>
         </div>
 
         <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
-          <mat-form-field appearance="outline" class="dark-form-field !text-xs shrink-0 w-full md:w-60">
+          <mat-form-field
+            appearance="outline"
+            class="dark-form-field !text-xs shrink-0 w-full md:w-60"
+          >
             <mat-label>Context Resume Profile</mat-label>
             <mat-select [(ngModel)]="selectedResumeId">
               <mat-option *ngFor="let res of resumes()" [value]="res.id">{{
@@ -73,11 +77,16 @@ import {
             *ngIf="sessionState() === 'setup'"
             class="!bg-slate-900/40 !border !border-slate-800/80 !rounded-3xl !p-8 shadow-xl glass-card relative overflow-hidden"
           >
-            <div class="absolute -top-16 -right-16 w-32 h-32 bg-violet-600/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div
+              class="absolute -top-16 -right-16 w-32 h-32 bg-violet-600/10 rounded-full blur-3xl pointer-events-none"
+            ></div>
 
-            <h3 class="text-lg font-bold text-slate-200 mb-2 font-outfit">Select Your Specialize Track</h3>
+            <h3 class="text-lg font-bold text-slate-200 mb-2 font-outfit">
+              Select Your Specialize Track
+            </h3>
             <p class="text-xs text-slate-400 mb-8 max-w-xl leading-relaxed">
-              Choose your target engineering specialization. The AI will customize Technical, Behavioral, and Scenario questions based on your profile resume details.
+              Choose your target engineering specialization. The AI will customize Technical,
+              Behavioral, and Scenario questions based on your profile resume details.
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
@@ -85,19 +94,26 @@ import {
                 *ngFor="let role of roles"
                 (click)="selectedRole.set(role)"
                 [class.border-violet-500]="selectedRole() === role"
-                [class.bg-violet-950\/10]="selectedRole() === role"
+                [class.bg-violet-950/10]="selectedRole() === role"
                 class="p-4 rounded-2xl border border-slate-800/80 bg-slate-950/40 hover:bg-slate-900/40 hover:border-slate-700 cursor-pointer transition-all flex items-center space-x-4 group"
               >
                 <div
                   class="w-10 h-10 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center text-slate-400 group-hover:text-white transition-colors"
                   [class.text-violet-400]="selectedRole() === role"
-                  [class.border-violet-500\/40]="selectedRole() === role"
+                  [class.border-violet-500/40]="selectedRole() === role"
                 >
                   <mat-icon>{{ getRoleIcon(role) }}</mat-icon>
                 </div>
                 <div>
-                  <h4 class="text-xs font-bold text-slate-200 group-hover:text-white transition-colors">{{ role }}</h4>
-                  <span class="text-[9px] text-slate-500 uppercase font-semibold tracking-wider font-mono">4 core questions</span>
+                  <h4
+                    class="text-xs font-bold text-slate-200 group-hover:text-white transition-colors"
+                  >
+                    {{ role }}
+                  </h4>
+                  <span
+                    class="text-[9px] text-slate-500 uppercase font-semibold tracking-wider font-mono"
+                    >4 core questions</span
+                  >
                 </div>
               </div>
             </div>
@@ -122,14 +138,18 @@ import {
             class="!bg-slate-900/40 !border !border-slate-800/80 !rounded-3xl !p-8 shadow-xl relative overflow-hidden glass-card"
           >
             <!-- Background Glow -->
-            <div class="absolute -top-16 -right-16 w-32 h-32 bg-violet-600/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div
+              class="absolute -top-16 -right-16 w-32 h-32 bg-violet-600/10 rounded-full blur-3xl pointer-events-none"
+            ></div>
 
             <div class="flex items-center justify-between border-b border-slate-800/80 pb-5 mb-6">
               <div>
                 <span class="text-[10px] font-bold text-violet-400 uppercase tracking-widest"
                   >Question {{ currentQuestionIndex() + 1 }} of {{ questions().length }}</span
                 >
-                <h3 class="text-xs font-semibold text-slate-400 mt-1">Role: {{ selectedRole() }}</h3>
+                <h3 class="text-xs font-semibold text-slate-400 mt-1">
+                  Role: {{ selectedRole() }}
+                </h3>
               </div>
               <span
                 class="px-3 py-1 rounded-lg text-[9px] font-bold uppercase tracking-wider bg-violet-950/30 border border-violet-900/60 text-violet-300"
@@ -141,7 +161,9 @@ import {
             <!-- Question Screen -->
             <div class="py-6 text-center space-y-4">
               <span class="text-4xl text-violet-500 block">"</span>
-              <p class="text-lg font-extrabold text-slate-100 max-w-xl mx-auto leading-relaxed font-outfit">
+              <p
+                class="text-lg font-extrabold text-slate-100 max-w-xl mx-auto leading-relaxed font-outfit"
+              >
                 {{ questions()[currentQuestionIndex()]?.question }}
               </p>
               <span class="text-4xl text-violet-500 block mt-2">"</span>
@@ -162,7 +184,10 @@ import {
                 class="w-full text-center text-xs text-slate-500 italic flex items-center justify-center space-x-2"
               >
                 <span class="w-2 h-2 rounded-full bg-slate-700 animate-pulse"></span>
-                <span>Click microphone to record your response. Make sure to allow mic permissions.</span>
+                <span
+                  >Click microphone to record your response. Make sure to allow mic
+                  permissions.</span
+                >
               </div>
             </div>
 
@@ -421,7 +446,9 @@ import {
             <!-- Feedback Summary Card -->
             <div class="p-6 rounded-2xl border border-slate-800 bg-slate-950/40 space-y-6 mb-8">
               <div>
-                <h4 class="text-xs font-extrabold text-violet-400 uppercase tracking-widest mb-2 font-outfit">
+                <h4
+                  class="text-xs font-extrabold text-violet-400 uppercase tracking-widest mb-2 font-outfit"
+                >
                   Executive Evaluation
                 </h4>
                 <p class="text-xs text-slate-300 leading-relaxed pl-1">
@@ -490,7 +517,9 @@ import {
 
             <!-- Q&A Logs Section -->
             <div class="space-y-6">
-              <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider mb-4 font-outfit">
+              <h3
+                class="text-sm font-bold text-slate-200 uppercase tracking-wider mb-4 font-outfit"
+              >
                 Question & Answer Performance Log
               </h3>
 
@@ -522,7 +551,8 @@ import {
                     *ngIf="ans.feedback"
                     class="p-4 rounded-xl bg-slate-950/70 border border-slate-900 text-slate-450 leading-relaxed"
                   >
-                    <strong class="text-[9px] uppercase tracking-wider text-violet-450 block mb-1.5 font-bold"
+                    <strong
+                      class="text-[9px] uppercase tracking-wider text-violet-450 block mb-1.5 font-bold"
                       >AI Evaluation:</strong
                     >
                     {{ ans.feedback }}
@@ -532,7 +562,8 @@ import {
                     *ngIf="ans.suggested_answer"
                     class="p-4 rounded-xl bg-slate-900/35 border border-slate-900 text-slate-300 leading-relaxed"
                   >
-                    <strong class="text-[9px] uppercase tracking-wider text-indigo-400 block mb-1.5 font-bold"
+                    <strong
+                      class="text-[9px] uppercase tracking-wider text-indigo-400 block mb-1.5 font-bold"
                       >Suggested Premium Model Answer:</strong
                     >
                     {{ ans.suggested_answer }}
@@ -598,13 +629,18 @@ import {
                 class="p-4 border border-slate-800/60 bg-slate-950/30 hover:bg-slate-800/40 rounded-2xl cursor-pointer transition-all flex items-center justify-between group"
               >
                 <div>
-                  <h4 class="text-xs font-bold text-slate-200 group-hover:text-white transition-colors">{{ s.role }}</h4>
+                  <h4
+                    class="text-xs font-bold text-slate-200 group-hover:text-white transition-colors"
+                  >
+                    {{ s.role }}
+                  </h4>
                   <span class="text-[9px] text-slate-500">{{
                     s.created_at | date: 'mediumDate'
                   }}</span>
                 </div>
                 <div class="text-right">
-                  <span class="text-xs font-bold text-violet-400 group-hover:text-violet-300 font-mono"
+                  <span
+                    class="text-xs font-bold text-violet-400 group-hover:text-violet-300 font-mono"
                     >{{ s.overall_score }}%</span
                   >
                   <span class="block text-[8px] text-slate-500 uppercase tracking-wider mt-1"

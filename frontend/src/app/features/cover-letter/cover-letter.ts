@@ -29,9 +29,12 @@ import { CareerService, CoverLetter } from '../../core/services/career.service';
     <div class="space-y-8 animate-fade-in">
       <!-- Header Callout -->
       <div class="p-6 rounded-3xl bg-slate-900/40 border border-slate-800/80 shadow-xl glass-card">
-        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white font-outfit">AI Cover Letter Generator</h1>
+        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white font-outfit">
+          AI Cover Letter Generator
+        </h1>
         <p class="text-slate-400 text-xs mt-1">
-          Draft customized, high-impact cover letters matching target job specs and your resume capabilities.
+          Draft customized, high-impact cover letters matching target job specs and your resume
+          capabilities.
         </p>
       </div>
 
@@ -109,13 +112,22 @@ import { CareerService, CoverLetter } from '../../core/services/career.service';
                 "
                 class="p-4 border border-slate-850 bg-slate-950/30 hover:bg-slate-800/40 rounded-2xl cursor-pointer transition-all flex flex-col gap-1 group"
               >
-                <h4 class="text-xs font-bold text-slate-200 group-hover:text-white transition-colors truncate">{{ letter.recipient_role }}</h4>
-                <div class="flex justify-between items-center text-[9px] text-slate-500 font-semibold font-mono">
+                <h4
+                  class="text-xs font-bold text-slate-200 group-hover:text-white transition-colors truncate"
+                >
+                  {{ letter.recipient_role }}
+                </h4>
+                <div
+                  class="flex justify-between items-center text-[9px] text-slate-500 font-semibold font-mono"
+                >
                   <span class="truncate pr-2">{{ letter.recipient_company }}</span>
                   <span class="shrink-0">{{ letter.created_at | date: 'shortDate' }}</span>
                 </div>
               </div>
-              <div *ngIf="history().length === 0" class="text-xs text-slate-500 text-center py-6 italic">
+              <div
+                *ngIf="history().length === 0"
+                class="text-xs text-slate-500 text-center py-6 italic"
+              >
                 No letters generated yet.
               </div>
             </div>
@@ -171,17 +183,25 @@ import { CareerService, CoverLetter } from '../../core/services/career.service';
                 *ngIf="!letterText() && !isGenerating()"
                 class="flex flex-col items-center justify-center py-32 text-slate-500 text-sm"
               >
-                <div class="w-16 h-16 rounded-2xl bg-slate-900/60 flex items-center justify-center border border-slate-800/80 text-violet-400 text-3xl mb-4 animate-float-slow">
+                <div
+                  class="w-16 h-16 rounded-2xl bg-slate-900/60 flex items-center justify-center border border-slate-800/80 text-violet-400 text-3xl mb-4 animate-float-slow"
+                >
                   ✉️
                 </div>
                 <p class="text-xs text-slate-400 font-medium max-w-xs text-center leading-relaxed">
-                  Configure configuration options and press "Generate AI Letter" to formulate your customized cover draft.
+                  Configure configuration options and press "Generate AI Letter" to formulate your
+                  customized cover draft.
                 </p>
               </div>
 
-              <div *ngIf="isGenerating()" class="text-center py-32 text-slate-400 text-sm flex flex-col items-center justify-center space-y-4">
+              <div
+                *ngIf="isGenerating()"
+                class="text-center py-32 text-slate-400 text-sm flex flex-col items-center justify-center space-y-4"
+              >
                 <span class="w-2.5 h-2.5 rounded-full bg-violet-500 animate-ping"></span>
-                <span class="text-xs text-slate-400 font-medium">Writing cover draft utilizing context specifications...</span>
+                <span class="text-xs text-slate-400 font-medium"
+                  >Writing cover draft utilizing context specifications...</span
+                >
               </div>
             </div>
           </mat-card>

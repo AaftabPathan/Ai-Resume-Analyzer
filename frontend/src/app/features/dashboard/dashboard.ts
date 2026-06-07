@@ -25,18 +25,26 @@ Chart.register(...registerables);
   template: `
     <div class="space-y-6">
       <!-- Welcome Callout -->
-      <div class="p-8 rounded-3xl bg-gradient-to-r from-violet-950/45 via-indigo-950/25 to-slate-900/40 border border-violet-500/20 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between relative overflow-hidden">
-        <div class="absolute top-[-50px] right-[-50px] w-48 h-48 rounded-full bg-violet-600/10 blur-3xl pointer-events-none"></div>
+      <div
+        class="p-8 rounded-3xl bg-gradient-to-r from-violet-950/45 via-indigo-950/25 to-slate-900/40 border border-violet-500/20 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between relative overflow-hidden"
+      >
+        <div
+          class="absolute top-[-50px] right-[-50px] w-48 h-48 rounded-full bg-violet-600/10 blur-3xl pointer-events-none"
+        ></div>
         <div>
           <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-2 text-gradient-premium">
             Welcome to Career Intel Dashboard
           </h1>
           <p class="text-slate-400 text-sm max-w-xl leading-relaxed">
-            Audit your resumes, evaluate your alignment with target job descriptions, and prepare for interviews using AI insights.
+            Audit your resumes, evaluate your alignment with target job descriptions, and prepare
+            for interviews using AI insights.
           </p>
         </div>
-        <button routerLink="/analyzer" mat-raised-button 
-                class="!bg-gradient-to-r !from-violet-600 !to-indigo-600 !text-white !px-6 !py-3 !rounded-xl !font-bold !shadow-md hover:!shadow-violet-600/20 glowing-btn-hover mt-4 md:mt-0 relative z-10">
+        <button
+          routerLink="/analyzer"
+          mat-raised-button
+          class="!bg-gradient-to-r !from-violet-600 !to-indigo-600 !text-white !px-6 !py-3 !rounded-xl !font-bold !shadow-md hover:!shadow-violet-600/20 glowing-btn-hover mt-4 md:mt-0 relative z-10"
+        >
           Upload New Resume
         </button>
       </div>
@@ -46,30 +54,52 @@ Chart.register(...registerables);
         <!-- ATS Score -->
         <mat-card class="glass-card glass-card-hover !rounded-2xl !p-6 shadow-lg">
           <div class="flex items-center justify-between">
-            <span class="text-xs text-slate-450 font-bold uppercase tracking-wider">Avg ATS Score</span>
-            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 font-bold font-mono">+4%</span>
+            <span class="text-xs text-slate-450 font-bold uppercase tracking-wider"
+              >Avg ATS Score</span
+            >
+            <span
+              class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 font-bold font-mono"
+              >+4%</span
+            >
           </div>
           <div class="mt-4 flex items-baseline space-x-2">
-            <span class="text-4xl font-extrabold tracking-tight text-white font-mono">{{ avgAtsScore() }}</span>
+            <span class="text-4xl font-extrabold tracking-tight text-white font-mono">{{
+              avgAtsScore()
+            }}</span>
             <span class="text-slate-500 text-sm font-semibold">/ 100</span>
           </div>
           <div class="mt-4">
-            <mat-progress-bar mode="determinate" [value]="avgAtsScore()" color="primary" class="!h-1.5 !rounded-full"></mat-progress-bar>
+            <mat-progress-bar
+              mode="determinate"
+              [value]="avgAtsScore()"
+              color="primary"
+              class="!h-1.5 !rounded-full"
+            ></mat-progress-bar>
           </div>
         </mat-card>
 
         <!-- Skill Coverage -->
         <mat-card class="glass-card glass-card-hover !rounded-2xl !p-6 shadow-lg">
           <div class="flex items-center justify-between">
-            <span class="text-xs text-slate-455 font-bold uppercase tracking-wider">Core Skills Tracked</span>
-            <span class="text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 font-bold font-mono">Profile</span>
+            <span class="text-xs text-slate-455 font-bold uppercase tracking-wider"
+              >Core Skills Tracked</span
+            >
+            <span
+              class="text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 font-bold font-mono"
+              >Profile</span
+            >
           </div>
           <div class="mt-4 flex items-baseline space-x-2">
-            <span class="text-4xl font-extrabold tracking-tight text-white font-mono">{{ totalSkills() }}</span>
+            <span class="text-4xl font-extrabold tracking-tight text-white font-mono">{{
+              totalSkills()
+            }}</span>
             <span class="text-slate-500 text-sm font-semibold">Listed</span>
           </div>
           <div class="mt-4 text-xs text-slate-500 flex items-center space-x-1">
-            <mat-icon class="!text-xs !w-3.5 !h-3.5 !flex !items-center !justify-center text-indigo-400">check_circle</mat-icon>
+            <mat-icon
+              class="!text-xs !w-3.5 !h-3.5 !flex !items-center !justify-center text-indigo-400"
+              >check_circle</mat-icon
+            >
             <span>Linked to resume data</span>
           </div>
         </mat-card>
@@ -77,15 +107,25 @@ Chart.register(...registerables);
         <!-- Interview Prep -->
         <mat-card class="glass-card glass-card-hover !rounded-2xl !p-6 shadow-lg">
           <div class="flex items-center justify-between">
-            <span class="text-xs text-slate-455 font-bold uppercase tracking-wider">Interview Questions</span>
-            <span class="text-xs px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/25 font-bold font-mono">Q&A</span>
+            <span class="text-xs text-slate-455 font-bold uppercase tracking-wider"
+              >Interview Questions</span
+            >
+            <span
+              class="text-xs px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/25 font-bold font-mono"
+              >Q&A</span
+            >
           </div>
           <div class="mt-4 flex items-baseline space-x-2">
-            <span class="text-4xl font-extrabold tracking-tight text-white font-mono">{{ interviewQuestionsCount() }}</span>
+            <span class="text-4xl font-extrabold tracking-tight text-white font-mono">{{
+              interviewQuestionsCount()
+            }}</span>
             <span class="text-slate-500 text-sm font-semibold">Generated</span>
           </div>
           <div class="mt-4 text-xs text-slate-500 flex items-center space-x-1">
-            <mat-icon class="!text-xs !w-3.5 !h-3.5 !flex !items-center !justify-center text-violet-400">help_outline</mat-icon>
+            <mat-icon
+              class="!text-xs !w-3.5 !h-3.5 !flex !items-center !justify-center text-violet-400"
+              >help_outline</mat-icon
+            >
             <span>Ready for review</span>
           </div>
         </mat-card>
@@ -93,15 +133,25 @@ Chart.register(...registerables);
         <!-- Cover Letters -->
         <mat-card class="glass-card glass-card-hover !rounded-2xl !p-6 shadow-lg">
           <div class="flex items-center justify-between">
-            <span class="text-xs text-slate-455 font-bold uppercase tracking-wider">Cover Letters</span>
-            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-450 border border-emerald-500/25 font-bold font-mono">Docs</span>
+            <span class="text-xs text-slate-455 font-bold uppercase tracking-wider"
+              >Cover Letters</span
+            >
+            <span
+              class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-450 border border-emerald-500/25 font-bold font-mono"
+              >Docs</span
+            >
           </div>
           <div class="mt-4 flex items-baseline space-x-2">
-            <span class="text-4xl font-extrabold tracking-tight text-white font-mono">{{ coverLetterCount() }}</span>
+            <span class="text-4xl font-extrabold tracking-tight text-white font-mono">{{
+              coverLetterCount()
+            }}</span>
             <span class="text-slate-500 text-sm font-semibold">Generated</span>
           </div>
           <div class="mt-4 text-xs text-slate-500 flex items-center space-x-1">
-            <mat-icon class="!text-xs !w-3.5 !h-3.5 !flex !items-center !justify-center text-emerald-400">insert_drive_file</mat-icon>
+            <mat-icon
+              class="!text-xs !w-3.5 !h-3.5 !flex !items-center !justify-center text-emerald-400"
+              >insert_drive_file</mat-icon
+            >
             <span>Custom tailored templates</span>
           </div>
         </mat-card>
@@ -130,7 +180,9 @@ Chart.register(...registerables);
       <mat-card class="glass-card !rounded-2xl !p-6 shadow-lg">
         <div class="flex items-center justify-between mb-6">
           <h3 class="text-base font-bold text-slate-200">My Resumes</h3>
-          <span class="text-xs text-slate-500 font-semibold">{{ resumesList().length }} Resumes total</span>
+          <span class="text-xs text-slate-500 font-semibold"
+            >{{ resumesList().length }} Resumes total</span
+          >
         </div>
 
         <div class="overflow-x-auto">

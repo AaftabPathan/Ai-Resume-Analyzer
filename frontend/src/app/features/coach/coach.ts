@@ -43,12 +43,16 @@ import {
             AI Career Coach Workstation
           </h1>
           <p class="text-slate-400 text-xs mt-1">
-            Build custom transition timelines, analyze skills alignment, and master mock interview preparations.
+            Build custom transition timelines, analyze skills alignment, and master mock interview
+            preparations.
           </p>
         </div>
 
         <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
-          <mat-form-field appearance="outline" class="dark-form-field !text-xs shrink-0 w-full md:w-60">
+          <mat-form-field
+            appearance="outline"
+            class="dark-form-field !text-xs shrink-0 w-full md:w-60"
+          >
             <mat-label>Active Resume Profile</mat-label>
             <mat-select [(ngModel)]="selectedResumeId" (selectionChange)="onResumeSelected()">
               <mat-option *ngFor="let res of resumes()" [value]="res.id">{{
@@ -113,7 +117,9 @@ import {
                       ></div>
 
                       <div class="space-y-3">
-                        <h4 class="text-sm font-bold text-violet-400 font-outfit">{{ step.phase }}</h4>
+                        <h4 class="text-sm font-bold text-violet-400 font-outfit">
+                          {{ step.phase }}
+                        </h4>
                         <div class="flex flex-wrap gap-2">
                           <span
                             *ngFor="let topic of step.topics"
@@ -125,8 +131,12 @@ import {
                         <div
                           class="p-4 bg-slate-950/40 border border-slate-850 rounded-2xl text-xs text-slate-400 mt-2 leading-relaxed"
                         >
-                          <strong class="text-slate-300 block mb-1 font-outfit">Recommended Project:</strong>
-                          <span *ngFor="let proj of step.projects" class="font-medium">{{ proj }}</span>
+                          <strong class="text-slate-300 block mb-1 font-outfit"
+                            >Recommended Project:</strong
+                          >
+                          <span *ngFor="let proj of step.projects" class="font-medium">{{
+                            proj
+                          }}</span>
                         </div>
                       </div>
                     </div>
@@ -140,7 +150,9 @@ import {
                 <mat-card
                   class="!bg-slate-900/40 !border !border-slate-800/80 !rounded-3xl !p-6 shadow-xl glass-card"
                 >
-                  <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-5 font-outfit">
+                  <h3
+                    class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-5 font-outfit"
+                  >
                     Required Skills
                   </h3>
                   <div class="space-y-5">
@@ -179,7 +191,9 @@ import {
                 <mat-card
                   class="!bg-slate-900/40 !border !border-slate-800/80 !rounded-3xl !p-6 shadow-xl glass-card"
                 >
-                  <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 font-outfit">
+                  <h3
+                    class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 font-outfit"
+                  >
                     Target Certifications
                   </h3>
                   <ul class="space-y-3 text-xs text-slate-300">
@@ -207,9 +221,12 @@ import {
               class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 p-6 rounded-3xl border border-slate-850 bg-slate-900/40 glass-card"
             >
               <div class="space-y-1">
-                <span class="font-bold block text-slate-200 font-outfit text-sm">Personalized Interview Q&A Cards</span>
+                <span class="font-bold block text-slate-200 font-outfit text-sm"
+                  >Personalized Interview Q&A Cards</span
+                >
                 <span class="text-slate-400 text-xs leading-relaxed block max-w-lg"
-                  >Generate dynamic, highly role-aligned behavioral and technical questions based on your resume stack.</span
+                  >Generate dynamic, highly role-aligned behavioral and technical questions based on
+                  your resume stack.</span
                 >
               </div>
               <div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
@@ -263,10 +280,13 @@ import {
                     >
                       {{ q.type }}
                     </span>
-                    <h4 class="text-xs font-bold text-slate-200 truncate pr-4 font-outfit">{{ q.question }}</h4>
+                    <h4 class="text-xs font-bold text-slate-200 truncate pr-4 font-outfit">
+                      {{ q.question }}
+                    </h4>
                   </div>
                   <div class="flex items-center space-x-3 shrink-0">
-                    <span class="text-[10px] font-mono font-bold text-slate-500 bg-slate-950 border border-slate-850 px-2 py-0.5 rounded-lg"
+                    <span
+                      class="text-[10px] font-mono font-bold text-slate-500 bg-slate-950 border border-slate-850 px-2 py-0.5 rounded-lg"
                       >Diff: {{ q.difficulty }}</span
                     >
                     <mat-icon
@@ -286,7 +306,8 @@ import {
                   <div
                     class="p-4 rounded-2xl border border-indigo-900/30 bg-indigo-950/5 text-slate-350 text-xs leading-relaxed"
                   >
-                    <strong class="block text-indigo-400 mb-1.5 text-[9px] uppercase tracking-wider font-bold"
+                    <strong
+                      class="block text-indigo-400 mb-1.5 text-[9px] uppercase tracking-wider font-bold"
                       >Suggested Answer Matrix</strong
                     >
                     {{ q.suggestedAnswer }}
@@ -361,14 +382,16 @@ import {
                       Alignment index: {{ gapResult()?.targetRole }}
                     </h3>
                     <p class="text-slate-400 text-xs leading-relaxed max-w-sm">
-                      Resume contains {{ gapResult()?.currentSkillsCount }} out of {{ gapResult()?.benchmarkSkillsCount }} core benchmark skills.
+                      Resume contains {{ gapResult()?.currentSkillsCount }} out of
+                      {{ gapResult()?.benchmarkSkillsCount }} core benchmark skills.
                     </p>
                   </div>
                   <div class="text-right z-10 shrink-0">
                     <span class="text-4xl font-extrabold text-emerald-450 font-mono"
                       >{{ gapResult()?.matchRate }}%</span
                     >
-                    <span class="block text-[9px] text-slate-500 font-bold uppercase tracking-wider mt-1"
+                    <span
+                      class="block text-[9px] text-slate-500 font-bold uppercase tracking-wider mt-1"
                       >Match Index</span
                     >
                   </div>
@@ -377,7 +400,9 @@ import {
                 <!-- Skill checklists -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <!-- Match check -->
-                  <div class="p-6 rounded-3xl bg-slate-900/35 border border-slate-800/80 glass-card">
+                  <div
+                    class="p-6 rounded-3xl bg-slate-900/35 border border-slate-800/80 glass-card"
+                  >
                     <h4 class="text-sm font-bold text-slate-200 mb-4 flex items-center space-x-2">
                       <mat-icon class="text-emerald-400">check_circle</mat-icon>
                       <span class="font-outfit">Acquired Skills</span>
@@ -392,7 +417,9 @@ import {
                   </div>
 
                   <!-- Missing check -->
-                  <div class="p-6 rounded-3xl bg-slate-900/35 border border-slate-800/80 glass-card">
+                  <div
+                    class="p-6 rounded-3xl bg-slate-900/35 border border-slate-800/80 glass-card"
+                  >
                     <h4 class="text-sm font-bold text-slate-200 mb-4 flex items-center space-x-2">
                       <mat-icon class="text-violet-400">remove_circle</mat-icon>
                       <span class="font-outfit">Missing Skills</span>
@@ -414,7 +441,9 @@ import {
                 <mat-card
                   class="!bg-slate-900/40 !border !border-slate-800/80 !rounded-3xl !p-6 shadow-xl glass-card"
                 >
-                  <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-5 font-outfit">
+                  <h3
+                    class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-5 font-outfit"
+                  >
                     Recommended Pathways
                   </h3>
                   <div class="space-y-3">
@@ -434,12 +463,16 @@ import {
                 <mat-card
                   class="!bg-slate-900/40 !border !border-slate-800/80 !rounded-3xl !p-6 shadow-xl glass-card"
                 >
-                  <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 font-outfit">
+                  <h3
+                    class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 font-outfit"
+                  >
                     Capstone Project Suggestion
                   </h3>
                   <div *ngFor="let prj of gapResult()?.projects" class="space-y-2">
                     <h4 class="text-xs font-bold text-violet-400 font-outfit">{{ prj.title }}</h4>
-                    <p class="text-[11px] text-slate-400 leading-relaxed font-semibold">{{ prj.description }}</p>
+                    <p class="text-[11px] text-slate-400 leading-relaxed font-semibold">
+                      {{ prj.description }}
+                    </p>
                   </div>
                 </mat-card>
               </div>

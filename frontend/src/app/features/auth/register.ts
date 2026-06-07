@@ -26,18 +26,31 @@ import { AuthService } from '../../core/services/auth.service';
     MatProgressBarModule,
   ],
   template: `
-    <div class="min-h-screen bg-slate-950 text-white flex items-center justify-center p-6 relative overflow-hidden">
+    <div
+      class="min-h-screen bg-slate-950 text-white flex items-center justify-center p-6 relative overflow-hidden"
+    >
       <!-- Background glows -->
-      <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-violet-900/15 blur-[120px] pointer-events-none animate-float-slow"></div>
-      <div class="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-cyan-950/15 blur-[120px] pointer-events-none animate-float-delayed"></div>
+      <div
+        class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-violet-900/15 blur-[120px] pointer-events-none animate-float-slow"
+      ></div>
+      <div
+        class="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-cyan-950/15 blur-[120px] pointer-events-none animate-float-delayed"
+      ></div>
 
       <div class="w-full max-w-md relative z-10">
         <!-- Logo Header -->
-        <div routerLink="/" class="flex items-center justify-center space-x-3 mb-8 cursor-pointer group">
-          <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-violet-600 to-indigo-600 flex items-center justify-center font-bold text-sm shadow-md">
+        <div
+          routerLink="/"
+          class="flex items-center justify-center space-x-3 mb-8 cursor-pointer group"
+        >
+          <div
+            class="w-9 h-9 rounded-lg bg-gradient-to-tr from-violet-600 to-indigo-600 flex items-center justify-center font-bold text-sm shadow-md"
+          >
             AR
           </div>
-          <span class="text-lg font-bold tracking-tight text-slate-200 group-hover:text-white transition">
+          <span
+            class="text-lg font-bold tracking-tight text-slate-200 group-hover:text-white transition"
+          >
             ResumeAI Intel
           </span>
         </div>
