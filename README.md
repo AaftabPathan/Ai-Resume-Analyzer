@@ -144,3 +144,17 @@ Ai-Resume-Analyzer/
 * **Career Coach**: `GET /api/coach/roadmap` (Custom learning timelines)
 * **Voice Simulator**: `POST /api/voice/session` (Generate questions) | `POST /api/voice/evaluate` (Evaluate spoken answer transcript)
 * **Mentor Chat**: `POST /api/chat/query` (Send chat questions with profile context)
+
+## 👨‍💻 Author
+
+**Aaftab Pathan**
+
+* GitHub: https://github.com/AaftabPathan
+* LinkedIn: https://linkedin.com/in/aaftabpathan
+* Gmail: aaftabaayubpathan@gmail.com
+
+---
+
+## ⭐ Support 
+
+If you like this project, give it a ⭐ on GitHub!
