@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Resume Analyzer & Career Intelligence Platform Presentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0b0c10;
+      --card-bg: rgba(22, 27, 34, 0.6);
+      --primary: #6f42c1;
+      --secondary: #00f2fe;
+      --accent: #ff007f;
+      --text: #f0f3f6;
+      --muted: #8b949e;
+      --border: rgba(255, 255, 255, 0.08);
+      --neon-glow: 0 0 15px rgba(0, 242, 254, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Print styling rules */
+    @media print {
+      body {
+        background: #050609 !important;
+        color: #ffffff !important;
+      }
+      .controls, .print-btn-container {
+        display: none !important;
+      }
+      .slide {
+        page-break-after: always !important;
+        display: flex !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        background: #050609 !important;
+        opacity: 1 !important;
+        transform: none !important;
+        position: relative !important;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+      .slide-content {
+        transform: scale(0.9) !important;
+      }
+    }
+
+    /* Presentation Controls */
+    .print-btn-container {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--neon-glow);
+      transition: all 0.3s ease;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(111, 66, 193, 0.5);
+    }
+
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      z-index: 100;
+      background: rgba(11, 12, 16, 0.85);
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .slide-indicator {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      min-width: 60px;
+      text-align: center;
+    }
+
+    /* Slides container and layout */
+    .slides-container {
+      width: 100%;
+      max-width: 1000px;
+      margin: 60px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+    }
+
+    .slide {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      width: 100%;
+      aspect-ratio: 16/9;
+      padding: 50px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+
+    .slide.active {
+      display: flex;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Background futuristic shapes in slides */
+    .slide::before {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.1) 0%, transparent 70%);
+      top: -30px;
+      right: -30px;
+      pointer-events: none;
+    }
+
+    .slide::after {
+      content: '';
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(111, 66, 193, 0.08) 0%, transparent 70%);
+      bottom: -80px;
+      left: -80px;
+      pointer-events: none;
+    }
+
+    /* Slide content styling */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 15px;
+    }
+
+    .slide-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      background: linear-gradient(120deg, #ffffff 40%, var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .slide-tag {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--secondary);
+      font-weight: 800;
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(0, 242, 254, 0.05);
+    }
+
+    .slide-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      padding-top: 15px;
+    }
+
+    .slide-footer-left {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* Bullet and list layouts */
+    .points-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .points-list li {
+      position: relative;
+      padding-left: 28px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .points-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--secondary);
+      font-size: 18px;
+    }
+
+    .points-list li strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* Feature Cards */
+    .card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Title Slide Specifics */
+    .title-slide {
+      text-align: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .main-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #ffffff 30%, var(--secondary) 70%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .sub-title {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .presenter-info {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .info-block span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .info-block p {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Image wrapper inside slides */
+    .slide-img-container {
+      width: 100%;
+      height: 100%;
+      max-height: 220px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      background: #000;
+    }
+
+    .slide-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    /* Tech Stack Badges */
+    .badges-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-core {
+      border-color: rgba(0, 242, 254, 0.4);
+      background: rgba(0, 242, 254, 0.05);
+      color: var(--secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar controls -->
+  <div class="print-btn-container">
+    <button class="btn" onclick="window.print()">📥 Save / Print as PDF</button>
+  </div>
+
+  <div class="slides-container">
+    
+    <!-- SLIDE 1: TITLE -->
+    <div class="slide active" id="slide-1">
+      <div class="slide-body title-slide">
+        <div style="text-transform: uppercase; font-size: 12px; letter-spacing: 4px; color: var(--secondary); font-weight: 800;">
+          College Seminar Presentation
+        </div>
+        <h1 class="main-title">AI Resume Analyzer &<br>Career Intelligence Platform</h1>
+        <p class="sub-title">A Premium Full-Stack Application Powered by Google Gemini AI</p>
+        
+        <div class="presenter-info">
+          <div class="info-block">
+            <span>Project Domain</span>
+            <p>Artificial Intelligence / Web Engineering</p>
+          </div>
+          <div class="info-block">
+            <span>Powered By</span>
+            <p>Angular 19, Express, Gemini 1.5</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Career Platform</div>
+        <div>Slide 1 / 12</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: PROBLEM STATEMENT -->
+    <div class="slide" id="slide-2">
+      <div class="slide-header">
+        <h2 class="slide-title">⚠️ Problem Statement</h2>
+        <span class="slide-tag">Context</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>ATS Black Box</strong>: Modern recruitment uses Applicant Tracking Systems (ATS) that auto-reject 75% of resumes based on algorithms. Candidates don't know why.</li>
+              <li><strong>Lack of Real-time Review</strong>: Hiring consultancy fees are high, and static online builders provide no keyword density feedback.</li>
+              <li><strong>Interview Anxiety</strong>: Candidates struggle with tech-round interviews due to lack of customized behavioral/technical mock practice.</li>
+              <li><strong>Inefficient Roadmaps</strong>: Generic roadmaps are available, but none evaluate the candidate's existing skill gap.</li>
+            </ul>
+          </div>
+          <div class="card" style="background: rgba(255, 0, 127, 0.05); border-color: rgba(255, 0, 127, 0.2);">
+            <h3 style="color: var(--accent);">🚨 Key Statistics</h3>
+            <p style="margin-top: 10px; font-size: 15px; color: #fff;"><strong>75%+</strong> of resumes are screened out before a human recruiter sees them.</p>
+            <p style="margin-top: 10px; font-size: 15px; color: #fff;"><strong>80%+</strong> candidates struggle to verbalize their experience in technical interviews.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 2 / 12</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: PROPOSED SOLUTION -->
+    <div class="slide" id="slide-3">
+      <div class="slide-header">
+        <h2 class="slide-title">💡 Proposed Solution</h2>
+        <span class="slide-tag">Innovation</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card">
+            <h3>🔍 1. Smart Parsing & ATS</h3>
+            <p>Automatically extract data from PDFs/Word files, parse it using LLM intelligence, and grade it against industry targets instantly.</p>
+          </div>
+          <div class="card">
+            <h3>🎙️ 2. Voice Interview Simulator</h3>
+            <p>Real-time speech-to-text assessment testing communication, technical accuracy, and answering confidence level.</p>
+          </div>
+          <div class="card">
+            <h3>🧭 3. Skill Gap & Timelines</h3>
+            <p>Evaluate resume gaps and generate customized 30/60/90-day learning schedules with specific objectives and projects.</p>
+          </div>
+        </div>
+        <div style="margin-top: 25px; padding: 15px; background: rgba(0, 242, 254, 0.05); border: 1px dashed rgba(0, 242, 254, 0.3); border-radius: 8px; font-size: 14px; text-align: center;">
+          🚀 **Our Goal**: Transition the candidate journey from *static resume editing* to *intelligent, AI-guided career coaching*.
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 3 / 12</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: SYSTEM KEY FEATURES -->
+    <div class="slide" id="slide-4">
+      <div class="slide-header">
+        <h2 class="slide-title">🎯 Core Features</h2>
+        <span class="slide-tag">Capabilities</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <ul class="points-list">
+            <li><strong>AI Resume Parser</strong>: Converts PDF/DOCX to a structured JSON profile database.</li>
+            <li><strong>ATS Auditor</strong>: Diagnostic breakdown (formatting, experience metrics, missing keywords).</li>
+            <li><strong>Mock Voice Simulator</strong>: Interactive speech-to-text assessment of interview answers.</li>
+            <li><strong>Resume Builder & Improver</strong>: Live visual editor with active AI phrasing improvements.</li>
+          </ul>
+          <ul class="points-list">
+            <li><strong>AI Career Mentor Chat</strong>: AI mentor chat that knows your specific profile and gaps.</li>
+            <li><strong>Cover Letter Creator</strong>: Generates customized high-converting letters tailored to job roles.</li>
+            <li><strong>Recruiter Dashboard</strong>: Ranks multiple uploaded candidate profiles against target roles.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 4 / 12</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: SYSTEM ARCHITECTURE -->
+    <div class="slide" id="slide-5">
+      <div class="slide-header">
+        <h2 class="slide-title">🏗️ System Architecture</h2>
+        <span class="slide-tag">Tech Stack</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Frontend</strong>: Angular 19 (Standalone Architecture) + Tailwind CSS (v4) + Angular Material. State management relies on Angular <strong>Signals</strong>.</li>
+              <li><strong>Backend</strong>: Node.js with Express framework, secured with Helmet, Rate-Limit, and CORS.</li>
+              <li><strong>Databases</strong>: Unified database layer supporting **SQLite** (local `.db` file) and **MySQL** seamlessly.</li>
+              <li><strong>AI Integration</strong>: Google Generative AI SDK using the **Gemini 1.5 Flash** model.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="card" style="margin-bottom: 15px;">
+              <h3 style="margin-bottom: 5px;">🔥 Modern Frontend</h3>
+              <p>Uses reactive signals (`signal`, `computed`) for smooth view rendering and robust state handling.</p>
+            </div>
+            <div class="card">
+              <h3 style="margin-bottom: 5px;">💾 Offline Capability</h3>
+              <p>Includes complete Mock Fallback Engines if Gemini API keys are not configured, ensuring 100% test reliability.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 5 / 12</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: DATABASE DESIGN -->
+    <div class="slide" id="slide-6">
+      <div class="slide-header">
+        <h2 class="slide-title">🗄️ Database Schema</h2>
+        <span class="slide-tag">Data Layer</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Users Table</strong>: Stores registration detail, role flags (user, recruiter, admin) and password hashes.</li>
+              <li><strong>Resumes & Versions</strong>: Holds the parsed text, PDF uploads, and historical versions of edits.</li>
+              <li><strong>ATS Reports Table</strong>: Links to resumes and stores score arrays, formatting evaluations, and missing keywords in JSON.</li>
+              <li><strong>Interview Tables</strong>: Track session stats, scores, question texts, and transcripted answers with voice metrics feedback.</li>
+            </ul>
+          </div>
+          <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid var(--border);">
+            <div style="font-family: monospace; font-size: 11px; color: var(--muted); line-height: 1.4;">
+              <span style="color: var(--secondary);">-- SQLite / MySQL Unified Migration Scheme</span><br>
+              CREATE TABLE users (id INTEGER PRIMARY KEY, email UNIQUE, password_hash);<br>
+              CREATE TABLE resumes (id INTEGER PRIMARY KEY, user_id, extracted_text);<br>
+              CREATE TABLE ats_reports (id INTEGER PRIMARY KEY, resume_id, overall_score);<br>
+              CREATE TABLE interview_sessions (id INTEGER, user_id, overall_score, feedback_json);
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 6 / 12</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: AI INTEGRATION DETAILS -->
+    <div class="slide" id="slide-7">
+      <div class="slide-header">
+        <h2 class="slide-title">🧠 Google Gemini AI Integration</h2>
+        <span class="slide-tag">AI Layer</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Model Used</strong>: `gemini-1.5-flash` for high-speed, cost-efficient, and accurate text processing.</li>
+              <li><strong>Structured Output</strong>: Prompts are engineered to return strict JSON syntax, which is safely parsed by the backend:
+                <code style="display:block; padding: 6px; background:#000; font-size:11px; margin-top:8px; border-radius:4px; color:#fff;">{ "overallScore": 85, "weaknesses": [...] }</code>
+              </li>
+              <li><strong>Context Management</strong>: For the Mentor Chatbot, complete conversation history + user resume JSON is fed to Gemini to generate custom advice.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="card" style="border-left: 4px solid var(--secondary);">
+              <h3>🎭 Robust Error Handling</h3>
+              <p>The code uses safe JSON cleaning regex methods (`.replace(/^```json/i, '')`) to extract data from raw markdown envelopes returned by the AI model. Includes structured try/catch modules with safe static mock backups.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 7 / 12</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: FRONTEND DESIGN & STYLING -->
+    <div class="slide" id="slide-8">
+      <div class="slide-header">
+        <h2 class="slide-title">🎨 Premium UI/UX & Glassmorphism</h2>
+        <span class="slide-tag">Visuals</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Theme</strong>: Sleek dark-mode system with harmonious violet and cyan neon gradients.</li>
+              <li><strong>Glassmorphism UI</strong>: Translucent cards utilizing modern CSS backdrop-filters:
+                <code style="display:inline-block; font-size:12px; color:var(--secondary); background:#000; padding:2px 6px; margin:4px 0; border-radius:4px;">backdrop-filter: blur(16px);</code>
+              </li>
+              <li><strong>Micro-animations</strong>: Custom keyframe animations for:
+                <ul style="padding-left:15px; font-size:14px; color:var(--muted); list-style:circle;">
+                  <li>Active voice waveforms.</li>
+                  <li>Floating background particles.</li>
+                  <li>Shifting borders and glowing card interactions.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>🚀 Dynamic Styling</h3>
+            <p>Tailwind CSS is used to enable responsive, mobile-first flexbox grids. Standard typography utilizes Google Fonts (Outfit and Inter) for a premium presentation feel.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 8 / 12</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: SCREENSHOTS - DASHBOARD -->
+    <div class="slide" id="slide-9">
+      <div class="slide-header">
+        <h2 class="slide-title">🖼️ Interface Preview - Dashboard</h2>
+        <span class="slide-tag">UI Screen 1</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <p style="font-size: 15px; line-height: 1.6; color: var(--muted); margin-bottom: 15px;">
+              The main portal dashboard features real-time dynamic statistics, aggregated ATS metrics, list of uploads, and a visual progress indicator.
+            </p>
+            <ul class="points-list">
+              <li>Quick summary widgets showing overall career stats.</li>
+              <li>Recent resume history log list.</li>
+              <li>Interactive links to jump directly to Mock practice or roadmaps.</li>
+            </ul>
+          </div>
+          <div class="slide-img-container">
+            <img src="screenshots/dashboard.png" alt="Dashboard Preview">
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 9 / 12</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: SCREENSHOTS - ANALYZER -->
+    <div class="slide" id="slide-10">
+      <div class="slide-header">
+        <h2 class="slide-title">🖼️ Interface Preview - ATS Analyzer</h2>
+        <span class="slide-tag">UI Screen 2</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <p style="font-size: 15px; line-height: 1.6; color: var(--muted); margin-bottom: 15px;">
+              The Analyzer page processes resumes and presents grading lists in an easy-to-understand grid format.
+            </p>
+            <ul class="points-list">
+              <li><strong>Drag & Drop Zone</strong>: Upload PDFs and DOCX files securely.</li>
+              <li><strong>Missing Keywords Audit</strong>: Flags words present in the Job Description but absent in the resume.</li>
+              <li><strong>Weaknesses Feed</strong>: Explains formatting errors or phrasing gaps.</li>
+            </ul>
+          </div>
+          <div class="slide-img-container">
+            <img src="screenshots/analyzer.png" alt="Analyzer Preview">
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 10 / 12</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: FUTURE ENHANCEMENTS -->
+    <div class="slide" id="slide-11">
+      <div class="slide-header">
+        <h2 class="slide-title">🔮 Future Scope & Enhancements</h2>
+        <span class="slide-tag">Roadmap</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Video Mock Interviews</strong>: Using facial expressions and emotion analysis APIs to score body language and posture during mock rounds.</li>
+              <li><strong>Direct Job Post Scraping</strong>: Scraping job boards automatically to find matches in real-time.</li>
+              <li><strong>Browser Extension</strong>: A Chrome extension that lets users audit their resumes directly on LinkedIn or Indeed job pages.</li>
+              <li><strong>Enterprise Recruiter Tools</strong>: Bulk import and export features for HR departments.</li>
+            </ul>
+          </div>
+          <div class="card" style="border-left: 4px solid var(--accent);">
+            <h3>🎯 Ultimate Vision</h3>
+            <p>Transforming this into a unified career center platform that not only points out gaps but automatically connects candidates to courses and hiring partners.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 11 / 12</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 12: CONCLUSION -->
+    <div class="slide" id="slide-12">
+      <div class="slide-body title-slide">
+        <h2 style="font-family: 'Outfit', sans-serif; font-size: 44px; font-weight: 900; background: linear-gradient(135deg, #fff 30%, var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+          Thank You!
+        </h2>
+        <p class="sub-title">Questions & Answers Session</p>
+        <div style="font-size: 15px; color: var(--muted); margin-top: 20px;">
+          👨‍💻 <strong>AI Resume Analyzer & Career Intelligence Platform</strong><br>
+          An Innovative Step Towards Smart Career Preparation.
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 12 / 12</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Slide Navigation Controls -->
+  <div class="controls">
+    <button class="nav-btn" onclick="prevSlide()">◀</button>
+    <div class="slide-indicator" id="indicator">1 / 12</div>
+    <button class="nav-btn" onclick="nextSlide()">▶</button>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 12;
+
+    function showSlide(slideIndex) {
+      if (slideIndex < 1 || slideIndex > totalSlides) return;
+      
+      // Deactivate all slides
+      for (let i = 1; i <= totalSlides; i++) {
+        document.getElementById(`slide-${i}`).classList.remove('active');
+      }
+
+      // Activate selected slide
+      document.getElementById(`slide-${slideIndex}`).classList.add('active');
+      
+      currentSlide = slideIndex;
+      document.getElementById('indicator').textContent = `${currentSlide} / ${totalSlides}`;
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        showSlide(currentSlide + 1);
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowRight' || event.key === ' ') {
+        nextSlide();
+      } else if (event.key === 'ArrowLeft') {
+        prevSlide();
+      }
+    });
+  </script>
+</body>
+</html>
