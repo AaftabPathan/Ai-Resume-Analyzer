@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Resume Analyzer & Career Intelligence Platform Presentation</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #0b0c10;
-      --card-bg: rgba(22, 27, 34, 0.6);
-      --primary: #6f42c1;
+      --bg-color: #08090c;
+      --card-bg: rgba(17, 22, 30, 0.75);
+      --primary: #8b5cf6;
       --secondary: #00f2fe;
-      --accent: #ff007f;
-      --text: #f0f3f6;
-      --muted: #8b949e;
+      --accent: #ec4899;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
       --border: rgba(255, 255, 255, 0.08);
-      --neon-glow: 0 0 15px rgba(0, 242, 254, 0.25);
+      --neon-glow: 0 0 20px rgba(139, 92, 246, 0.25);
     }
 
     * {
@@ -62,7 +62,7 @@
         align-items: center !important;
       }
       .slide-content {
-        transform: scale(0.9) !important;
+        transform: scale(0.95) !important;
       }
     }
 
@@ -78,10 +78,10 @@
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: #fff;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border-radius: 30px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       box-shadow: var(--neon-glow);
       transition: all 0.3s ease;
@@ -90,7 +90,7 @@
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 25px rgba(111, 66, 193, 0.5);
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
     }
 
     .controls {
@@ -100,99 +100,102 @@
       gap: 15px;
       align-items: center;
       z-index: 100;
-      background: rgba(11, 12, 16, 0.85);
-      padding: 10px 20px;
+      background: rgba(8, 9, 12, 0.9);
+      padding: 12px 24px;
       border-radius: 30px;
       border: 1px solid var(--border);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(15px);
     }
 
     .nav-btn {
       background: rgba(255, 255, 255, 0.1);
       border: none;
       color: var(--text);
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 20px;
       transition: all 0.2s ease;
     }
 
     .nav-btn:hover {
       background: var(--primary);
       color: #fff;
+      transform: scale(1.1);
     }
 
     .slide-indicator {
       font-size: 14px;
-      font-weight: 600;
-      color: var(--muted);
-      min-width: 60px;
+      font-weight: 700;
+      color: var(--secondary);
+      min-width: 80px;
       text-align: center;
+      font-family: 'Outfit', sans-serif;
     }
 
     /* Slides container and layout */
     .slides-container {
       width: 100%;
-      max-width: 1000px;
-      margin: 60px auto;
+      max-width: 1100px;
+      margin: 80px auto;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       flex-grow: 1;
+      padding: 0 20px;
     }
 
     .slide {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 20px;
       width: 100%;
       aspect-ratio: 16/9;
-      padding: 50px;
+      padding: 45px 55px;
       display: none;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
       position: relative;
       overflow: hidden;
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px);
     }
 
     .slide.active {
       display: flex;
-      animation: fadeIn 0.5s ease forwards;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: scale(0.98) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    /* Background futuristic shapes in slides */
+    /* Background futuristic glow blobs */
     .slide::before {
       content: '';
       position: absolute;
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle, rgba(0, 242, 254, 0.1) 0%, transparent 70%);
-      top: -30px;
-      right: -30px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, transparent 70%);
+      top: -50px;
+      right: -50px;
       pointer-events: none;
     }
 
     .slide::after {
       content: '';
       position: absolute;
-      width: 250px;
-      height: 250px;
-      background: radial-gradient(circle, rgba(111, 66, 193, 0.08) 0%, transparent 70%);
-      bottom: -80px;
-      left: -80px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+      bottom: -100px;
+      left: -100px;
       pointer-events: none;
     }
 
@@ -202,12 +205,12 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 2px solid rgba(255, 255, 255, 0.05);
-      padding-bottom: 15px;
+      padding-bottom: 12px;
     }
 
     .slide-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 800;
       background: linear-gradient(120deg, #ffffff 40%, var(--secondary));
       -webkit-background-clip: text;
@@ -218,15 +221,16 @@
     }
 
     .slide-tag {
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       color: var(--secondary);
       font-weight: 800;
       border: 1px solid rgba(0, 242, 254, 0.3);
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 20px;
       background: rgba(0, 242, 254, 0.05);
+      font-family: 'Outfit', sans-serif;
     }
 
     .slide-body {
@@ -234,7 +238,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      margin-top: 25px;
+      margin-top: 20px;
     }
 
     .slide-footer {
@@ -243,13 +247,15 @@
       align-items: center;
       font-size: 12px;
       color: var(--muted);
-      border-top: 1px solid rgba(255, 255, 255, 0.03);
-      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding-top: 12px;
+      font-family: 'Outfit', sans-serif;
     }
 
     .slide-footer-left {
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.5px;
+      color: var(--muted);
     }
 
     /* Bullet and list layouts */
@@ -257,14 +263,14 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .points-list li {
       position: relative;
-      padding-left: 28px;
-      font-size: 16px;
-      line-height: 1.6;
+      padding-left: 26px;
+      font-size: 15px;
+      line-height: 1.5;
     }
 
     .points-list li::before {
@@ -273,12 +279,12 @@
       left: 0;
       top: 0;
       color: var(--secondary);
-      font-size: 18px;
+      font-size: 16px;
     }
 
     .points-list li strong {
       color: #ffffff;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     /* Grid Layouts */
@@ -295,19 +301,19 @@
       gap: 20px;
     }
 
-    /* Feature Cards */
+    /* Cards */
     .card {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 12px;
-      padding: 18px;
+      padding: 16px;
       transition: all 0.3s ease;
     }
 
     .card h3 {
       font-family: 'Outfit', sans-serif;
-      font-size: 16px;
-      margin-bottom: 8px;
+      font-size: 15px;
+      margin-bottom: 6px;
       color: var(--secondary);
       display: flex;
       align-items: center;
@@ -315,53 +321,61 @@
     }
 
     .card p {
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.4;
+    }
+
+    .card ul {
+      margin-top: 6px;
+      padding-left: 14px;
+      font-size: 12px;
+      color: var(--muted);
     }
 
     /* Title Slide Specifics */
     .title-slide {
       text-align: center;
       justify-content: center;
-      gap: 20px;
+      gap: 15px;
     }
 
     .main-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 44px;
+      font-size: 42px;
       font-weight: 900;
-      line-height: 1.2;
-      background: linear-gradient(135deg, #ffffff 30%, var(--secondary) 70%, var(--accent));
+      line-height: 1.15;
+      background: linear-gradient(135deg, #ffffff 20%, var(--secondary) 65%, var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
     .sub-title {
-      font-size: 18px;
+      font-size: 17px;
       color: var(--muted);
-      margin-bottom: 30px;
-      letter-spacing: 1px;
+      margin-bottom: 25px;
+      letter-spacing: 0.8px;
     }
 
     .presenter-info {
       display: flex;
       justify-content: center;
-      gap: 40px;
-      font-size: 14px;
+      gap: 50px;
+      font-size: 13.5px;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       padding-top: 20px;
-      max-width: 500px;
+      max-width: 600px;
       margin: 0 auto;
     }
 
     .info-block span {
       display: block;
       color: var(--muted);
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
       margin-bottom: 4px;
+      letter-spacing: 1px;
     }
 
     .info-block p {
@@ -369,15 +383,15 @@
       font-weight: 600;
     }
 
-    /* Image wrapper inside slides */
+    /* Image container inside slides */
     .slide-img-container {
       width: 100%;
       height: 100%;
       max-height: 220px;
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
       border: 1px solid var(--border);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
       background: #000;
     }
 
@@ -385,407 +399,862 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.85;
+      opacity: 0.9;
     }
 
-    /* Tech Stack Badges */
+    /* Badges list */
     .badges-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 15px;
+      gap: 8px;
+      margin-top: 12px;
     }
 
     .badge {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 13px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #e5e7eb;
+      font-family: monospace;
     }
 
-    .badge-core {
-      border-color: rgba(0, 242, 254, 0.4);
-      background: rgba(0, 242, 254, 0.05);
+    .badge-highlight {
+      border-color: rgba(0, 242, 254, 0.3);
+      background: rgba(0, 242, 254, 0.04);
       color: var(--secondary);
     }
   </style>
 </head>
 <body>
 
-  <!-- Top bar controls -->
+  <!-- Top action button for print -->
   <div class="print-btn-container">
-    <button class="btn" onclick="window.print()">📥 Save / Print as PDF</button>
+    <button class="btn" onclick="window.print()">📥 Print/Save Presentation as PDF</button>
   </div>
 
   <div class="slides-container">
     
-    <!-- SLIDE 1: TITLE -->
+    <!-- SLIDE 1: COVER PAGE -->
     <div class="slide active" id="slide-1">
       <div class="slide-body title-slide">
-        <div style="text-transform: uppercase; font-size: 12px; letter-spacing: 4px; color: var(--secondary); font-weight: 800;">
-          College Seminar Presentation
+        <div style="text-transform: uppercase; font-size: 11px; letter-spacing: 5px; color: var(--secondary); font-weight: 800; font-family: 'Outfit';">
+          Academic Seminar Presentation
         </div>
-        <h1 class="main-title">AI Resume Analyzer &<br>Career Intelligence Platform</h1>
-        <p class="sub-title">A Premium Full-Stack Application Powered by Google Gemini AI</p>
+        <h1 class="main-title">AI-Powered Resume Analyzer &<br>Career Intelligence Platform</h1>
+        <p class="sub-title">A Modern Full-Stack System for Intelligent Career Development</p>
         
         <div class="presenter-info">
           <div class="info-block">
             <span>Project Domain</span>
-            <p>Artificial Intelligence / Web Engineering</p>
+            <p>Artificial Intelligence & Web Engineering</p>
           </div>
           <div class="info-block">
-            <span>Powered By</span>
-            <p>Angular 19, Express, Gemini 1.5</p>
+            <span>Core Architecture</span>
+            <p>Angular 19, Node.js, SQLite & Gemini 1.5</p>
           </div>
         </div>
       </div>
       <div class="slide-footer">
         <div class="slide-footer-left">AI Career Platform</div>
-        <div>Slide 1 / 12</div>
+        <div>Slide 1 / 25</div>
       </div>
     </div>
 
-    <!-- SLIDE 2: PROBLEM STATEMENT -->
+    <!-- SLIDE 2: ABSTRACT -->
     <div class="slide" id="slide-2">
       <div class="slide-header">
-        <h2 class="slide-title">⚠️ Problem Statement</h2>
-        <span class="slide-tag">Context</span>
+        <h2 class="slide-title">📄 Project Abstract</h2>
+        <span class="slide-tag">Executive Summary</span>
       </div>
       <div class="slide-body">
         <div class="grid-2">
           <div>
             <ul class="points-list">
-              <li><strong>ATS Black Box</strong>: Modern recruitment uses Applicant Tracking Systems (ATS) that auto-reject 75% of resumes based on algorithms. Candidates don't know why.</li>
-              <li><strong>Lack of Real-time Review</strong>: Hiring consultancy fees are high, and static online builders provide no keyword density feedback.</li>
-              <li><strong>Interview Anxiety</strong>: Candidates struggle with tech-round interviews due to lack of customized behavioral/technical mock practice.</li>
-              <li><strong>Inefficient Roadmaps</strong>: Generic roadmaps are available, but none evaluate the candidate's existing skill gap.</li>
+              <li><strong>Integrated Platform</strong>: A unified ecosystem designed to bridge the gap between candidate resumes and modern automated hiring systems (ATS).</li>
+              <li><strong>AI-Driven Insights</strong>: Evaluates resume content, extracts structured JSON profiles, and critiques writing style using advanced Large Language Models.</li>
+              <li><strong>Career Acceleration</strong>: Goes beyond analysis to provide customized training roadmap timelines and verbal voice mock interview practice.</li>
             </ul>
           </div>
-          <div class="card" style="background: rgba(255, 0, 127, 0.05); border-color: rgba(255, 0, 127, 0.2);">
-            <h3 style="color: var(--accent);">🚨 Key Statistics</h3>
-            <p style="margin-top: 10px; font-size: 15px; color: #fff;"><strong>75%+</strong> of resumes are screened out before a human recruiter sees them.</p>
-            <p style="margin-top: 10px; font-size: 15px; color: #fff;"><strong>80%+</strong> candidates struggle to verbalize their experience in technical interviews.</p>
+          <div class="card" style="border-left: 4px solid var(--primary);">
+            <h3 style="font-size:16px;">🌟 Unique Selling Proposition (USP)</h3>
+            <p style="font-size:13.5px; margin-top:8px;">
+              Unlike static builders, this platform serves as an <strong>interactive companion</strong> that actively prepares candidates verbally and guides their learning journey based on direct job specifications.
+            </p>
           </div>
         </div>
       </div>
       <div class="slide-footer">
         <div class="slide-footer-left">AI Resume Analyzer</div>
-        <div>Slide 2 / 12</div>
+        <div>Slide 2 / 25</div>
       </div>
     </div>
 
-    <!-- SLIDE 3: PROPOSED SOLUTION -->
+    <!-- SLIDE 3: PROBLEM STATEMENT -->
     <div class="slide" id="slide-3">
       <div class="slide-header">
-        <h2 class="slide-title">💡 Proposed Solution</h2>
-        <span class="slide-tag">Innovation</span>
+        <h2 class="slide-title">⚠️ The Problem Statement</h2>
+        <span class="slide-tag">Hiring Challenges</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>The ATS Filter Wall</strong>: 70-80% of resumes are auto-rejected by Applicant Tracking Systems (ATS) due to missing keywords, before ever reaching a human recruiter.</li>
+              <li><strong>Blind Spot Writing</strong>: Candidates write weak descriptions lacking measurable metrics (no STAR method) and have no way to audit their layouts.</li>
+              <li><strong>Interview Delivery Gaps</strong>: Many candidates have great resumes but fail in live interview rounds due to communication anxiety and poor verbal structuring.</li>
+            </ul>
+          </div>
+          <div class="card" style="background: rgba(236, 72, 153, 0.05); border-color: rgba(236, 72, 153, 0.2);">
+            <h3 style="color: var(--accent);">🚨 Why is this critical?</h3>
+            <p style="margin-top: 8px; font-size:13px; line-height:1.5;">
+              Job seekers apply to hundreds of openings without knowing why they are rejected. Meanwhile, companies miss qualified talent because candidate resumes fail to trigger basic parser keywords.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 3 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: PROPOSED SOLUTION -->
+    <div class="slide" id="slide-4">
+      <div class="slide-header">
+        <h2 class="slide-title">🧭 Proposed Solution</h2>
+        <span class="slide-tag">Platform Vision</span>
       </div>
       <div class="slide-body">
         <div class="grid-3">
           <div class="card">
-            <h3>🔍 1. Smart Parsing & ATS</h3>
-            <p>Automatically extract data from PDFs/Word files, parse it using LLM intelligence, and grade it against industry targets instantly.</p>
+            <h3>🤖 Real-Time AI Audit</h3>
+            <p>Converts static resume files (PDF/DOCX) into dynamic structured database formats, scoring styling and matches against target roles.</p>
           </div>
           <div class="card">
-            <h3>🎙️ 2. Voice Interview Simulator</h3>
-            <p>Real-time speech-to-text assessment testing communication, technical accuracy, and answering confidence level.</p>
+            <h3>📅 Adaptive Roadmaps</h3>
+            <p>Analyzes user skill sets, audits gaps against target tech tracks, and charts custom 30, 60, and 90-day learning timelines.</p>
           </div>
           <div class="card">
-            <h3>🧭 3. Skill Gap & Timelines</h3>
-            <p>Evaluate resume gaps and generate customized 30/60/90-day learning schedules with specific objectives and projects.</p>
+            <h3>🎙️ Speech Mock Coach</h3>
+            <p>Simulates virtual verbal interviews where answers are recorded, transcribed, and analyzed for fluency, confidence, and accuracy.</p>
           </div>
         </div>
-        <div style="margin-top: 25px; padding: 15px; background: rgba(0, 242, 254, 0.05); border: 1px dashed rgba(0, 242, 254, 0.3); border-radius: 8px; font-size: 14px; text-align: center;">
-          🚀 **Our Goal**: Transition the candidate journey from *static resume editing* to *intelligent, AI-guided career coaching*.
+        <div style="margin-top:20px; padding:12px; background: rgba(0, 242, 254, 0.04); border: 1px dashed rgba(0, 242, 254, 0.2); border-radius: 8px; font-size: 13.5px; text-align:center;">
+          🚀 Integrates modern web technology with LLM services to create a complete career preparation dashboard.
         </div>
       </div>
       <div class="slide-footer">
         <div class="slide-footer-left">AI Resume Analyzer</div>
-        <div>Slide 3 / 12</div>
+        <div>Slide 4 / 25</div>
       </div>
     </div>
 
-    <!-- SLIDE 4: SYSTEM KEY FEATURES -->
-    <div class="slide" id="slide-4">
-      <div class="slide-header">
-        <h2 class="slide-title">🎯 Core Features</h2>
-        <span class="slide-tag">Capabilities</span>
-      </div>
-      <div class="slide-body">
-        <div class="grid-2">
-          <ul class="points-list">
-            <li><strong>AI Resume Parser</strong>: Converts PDF/DOCX to a structured JSON profile database.</li>
-            <li><strong>ATS Auditor</strong>: Diagnostic breakdown (formatting, experience metrics, missing keywords).</li>
-            <li><strong>Mock Voice Simulator</strong>: Interactive speech-to-text assessment of interview answers.</li>
-            <li><strong>Resume Builder & Improver</strong>: Live visual editor with active AI phrasing improvements.</li>
-          </ul>
-          <ul class="points-list">
-            <li><strong>AI Career Mentor Chat</strong>: AI mentor chat that knows your specific profile and gaps.</li>
-            <li><strong>Cover Letter Creator</strong>: Generates customized high-converting letters tailored to job roles.</li>
-            <li><strong>Recruiter Dashboard</strong>: Ranks multiple uploaded candidate profiles against target roles.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="slide-footer">
-        <div class="slide-footer-left">AI Resume Analyzer</div>
-        <div>Slide 4 / 12</div>
-      </div>
-    </div>
-
-    <!-- SLIDE 5: SYSTEM ARCHITECTURE -->
+    <!-- SLIDE 5: TECH STACK OVERVIEW -->
     <div class="slide" id="slide-5">
       <div class="slide-header">
-        <h2 class="slide-title">🏗️ System Architecture</h2>
-        <span class="slide-tag">Tech Stack</span>
+        <h2 class="slide-title">💻 Tech Stack Overview</h2>
+        <span class="slide-tag">Architecture</span>
+      </div>
+      <div class="slide-body">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
+          <thead>
+            <tr style="border-bottom: 2px solid rgba(255,255,255,0.1); color: var(--secondary); font-family: 'Outfit';">
+              <th style="padding: 10px 0;">Layer</th>
+              <th style="padding: 10px 0;">Technologies Used</th>
+              <th style="padding: 10px 0;">Core Responsibility</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 10px 0; font-weight: 700; color:#fff;">Frontend Framework</td>
+              <td style="padding: 10px 0; font-family: monospace;">Angular 19, TypeScript, RxJS</td>
+              <td style="padding: 10px 0; color: var(--muted);">Client UI rendering, local state, audio recording controls.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 10px 0; font-weight: 700; color:#fff;">Styling System</td>
+              <td style="padding: 10px 0; font-family: monospace;">Tailwind CSS v4, Angular Material</td>
+              <td style="padding: 10px 0; color: var(--muted);">Responsive grids, glassmorphism cards, glowing active animations.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 10px 0; font-weight: 700; color:#fff;">Backend Services</td>
+              <td style="padding: 10px 0; font-family: monospace;">Node.js, Express.js</td>
+              <td style="padding: 10px 0; color: var(--muted);">REST endpoints routing, file uploads processing, security.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 10px 0; font-weight: 700; color:#fff;">Database Engine</td>
+              <td style="padding: 10px 0; font-family: monospace;">SQLite (Default) / MySQL Adapter</td>
+              <td style="padding: 10px 0; color: var(--muted);">User metadata, resumes, chat threads & mock responses logs.</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; font-weight: 700; color:#fff;">AI & Intelligence</td>
+              <td style="padding: 10px 0; font-family: monospace;">Google Gemini 1.5 Flash API</td>
+              <td style="padding: 10px 0; color: var(--muted);">Resume text structuring, ATS audit, voice answers evaluation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 5 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: TECH STACK - FRONTEND -->
+    <div class="slide" id="slide-6">
+      <div class="slide-header">
+        <h2 class="slide-title">🎨 Tech Stack Deep Dive: Frontend</h2>
+        <span class="slide-tag">Angular 19 & Signals</span>
       </div>
       <div class="slide-body">
         <div class="grid-2">
           <div>
             <ul class="points-list">
-              <li><strong>Frontend</strong>: Angular 19 (Standalone Architecture) + Tailwind CSS (v4) + Angular Material. State management relies on Angular <strong>Signals</strong>.</li>
-              <li><strong>Backend</strong>: Node.js with Express framework, secured with Helmet, Rate-Limit, and CORS.</li>
-              <li><strong>Databases</strong>: Unified database layer supporting **SQLite** (local `.db` file) and **MySQL** seamlessly.</li>
-              <li><strong>AI Integration</strong>: Google Generative AI SDK using the **Gemini 1.5 Flash** model.</li>
+              <li><strong>Angular 19 (Standalone)</strong>: Modern design pattern that does away with heavy `NgModule` architecture. Speeds up initial application bootstrapping and lazy-loading of modules.</li>
+              <li><strong>Angular Signals</strong>: Modern reactive state management that tracks data changes (`signal`, `computed`). Avoids heavy re-rendering of entire components, ensuring high rendering speeds.</li>
+              <li><strong>TypeScript Safety</strong>: Eliminates type errors at compile-time for complex objects like `ResumeJson` or `AtsReport`.</li>
             </ul>
           </div>
           <div>
-            <div class="card" style="margin-bottom: 15px;">
-              <h3 style="margin-bottom: 5px;">🔥 Modern Frontend</h3>
-              <p>Uses reactive signals (`signal`, `computed`) for smooth view rendering and robust state handling.</p>
+            <div class="card" style="margin-bottom: 10px;">
+              <h3 style="font-size:14px;">⚡ Real-time Signals Example</h3>
+              <p style="font-family: monospace; font-size: 11px; margin-top:5px; color:#fff; background:#000; padding:8px; border-radius:4px;">
+                isSidebarOpen = signal(true);<br>
+                toggleSidebar() { this.isSidebarOpen.update(v => !v); }
+              </p>
             </div>
             <div class="card">
-              <h3 style="margin-bottom: 5px;">💾 Offline Capability</h3>
-              <p>Includes complete Mock Fallback Engines if Gemini API keys are not configured, ensuring 100% test reliability.</p>
+              <h3 style="font-size:14px;">📁 Lazy-Loading Modules</h3>
+              <p>Routes are loaded dynamically using `loadComponent()`, ensuring the browser only downloads code for the active screen, optimizing performance.</p>
             </div>
           </div>
         </div>
       </div>
       <div class="slide-footer">
         <div class="slide-footer-left">AI Resume Analyzer</div>
-        <div>Slide 5 / 12</div>
+        <div>Slide 6 / 25</div>
       </div>
     </div>
 
-    <!-- SLIDE 6: DATABASE DESIGN -->
-    <div class="slide" id="slide-6">
+    <!-- SLIDE 7: TECH STACK - CSS & STYLING -->
+    <div class="slide" id="slide-7">
       <div class="slide-header">
-        <h2 class="slide-title">🗄️ Database Schema</h2>
+        <h2 class="slide-title">💅 Tech Stack Deep Dive: Styling System</h2>
+        <span class="slide-tag">Tailwind CSS & Glassmorphism</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Tailwind CSS v4</strong>: Utility-first CSS compiling utilities into highly optimized styles. Accelerates layout creation (grid, flexbox, spacing).</li>
+              <li><strong>Glassmorphic Cards</strong>: Translucent cards styled with backdrop-filters and subtle borders, giving a premium dark aesthetic.</li>
+              <li><strong>Custom Keyframe Animations</strong>:
+                <ul style="padding-left:14px; font-size:13px; color:var(--muted); list-style:circle; margin-top:5px;">
+                  <li>`pulse-ring`: Outer glow shift for recording buttons.</li>
+                  <li>`waveform-bounce`: Visualizes microphone voice levels.</li>
+                  <li>`border-glow-shift`: Transitions card borders smoothly.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="card">
+              <h3>🎨 Design System Tokens</h3>
+              <div class="badges-container">
+                <span class="badge badge-highlight">#08090c (Bg)</span>
+                <span class="badge badge-highlight">#8b5cf6 (Violet)</span>
+                <span class="badge badge-highlight">#00f2fe (Cyan)</span>
+                <span class="badge badge-highlight">backdrop-blur-md</span>
+                <span class="badge">flex-row-reverse</span>
+                <span class="badge">animate-pulse</span>
+              </div>
+              <p style="margin-top:10px; font-size:12px;">
+                Visual consistency is maintained using unified tokens across dashboards, sidebar layouts, buttons, and responsive cards.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 7 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: TECH STACK - BACKEND & DB -->
+    <div class="slide" id="slide-8">
+      <div class="slide-header">
+        <h2 class="slide-title">⚙️ Tech Stack Deep Dive: Backend & Database</h2>
+        <span class="slide-tag">NodeJS & SQLite</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Node.js & Express.js</strong>: Backend core handling API requests. Standardizes CORS handling, Helmet security protections, and morgan logs.</li>
+              <li><strong>SQLite Database Engine</strong>: Zero-configuration local SQL database (`resume_analyzer.db`). Perfect for immediate deployment without database setup.</li>
+              <li><strong>MySQL Unified Connection Adapter</strong>: A custom wrapper class in backend config that can swap SQLite for MySQL automatically if credentials are supplied in `.env`.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="card">
+              <h3>📂 File Upload Handling (Multer)</h3>
+              <p style="font-size:12.5px; line-height:1.4;">
+                File uploads are filtered securely. Only PDF, DOCX, and TXT files are processed, protecting the server from malicious uploads. Temp uploads are pruned automatically.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 8 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: TECH STACK - AI CORE -->
+    <div class="slide" id="slide-9">
+      <div class="slide-header">
+        <h2 class="slide-title">🧠 Tech Stack Deep Dive: AI Services</h2>
+        <span class="slide-tag">Google Gemini API</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Gemini 1.5 Flash</strong>: The core AI model. Handled via the `@google/generative-ai` SDK. Extremely fast execution times with broad 1-million-token context windows.</li>
+              <li><strong>Strict JSON Schema Prompts</strong>: Instructs the AI model to return raw, parsable JSON without markdown wrapping (`\`\`\`json`).</li>
+              <li><strong>Robust Pre-Parsing Cleaning</strong>: Cleans AI outputs using regex to handle cases where the AI model returns markdown containers, preventing JSON parsing crashes.</li>
+            </ul>
+          </div>
+          <div class="card" style="background: rgba(0,242,254,0.02);">
+            <h3>🛡️ Graceful API Fallbacks</h3>
+            <p>
+              If the Gemini API key is missing or encounters a rate limit, the system automatically redirects requests to **Mock Fallback Engines** to generate realistic career guides, ATS scores, and voice evaluations seamlessly.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 9 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: ARCHITECTURE & WORKFLOW DIAGRAM -->
+    <div class="slide" id="slide-10">
+      <div class="slide-header">
+        <h2 class="slide-title">🏗️ System Architecture & Workflow</h2>
+        <span class="slide-tag">System Design</span>
+      </div>
+      <div class="slide-body">
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 18px; border-radius: 12px; font-family: monospace; font-size:12.5px; line-height: 1.6;">
+          <div style="display:flex; justify-content:space-between; text-align:center;">
+            <div style="width:22%; padding:10px; border:1px solid var(--secondary); background:rgba(0,242,254,0.05); border-radius:8px;">
+              <strong>Angular Client (UI)</strong><br>
+              <span style="font-size:10px; color:var(--muted);">Uploads files, captures voice, displays charts</span>
+            </div>
+            <div style="align-self:center; color:var(--primary);">━━━━▶</div>
+            <div style="width:22%; padding:10px; border:1px solid var(--primary); background:rgba(139,92,246,0.05); border-radius:8px;">
+              <strong>Express Server</strong><br>
+              <span style="font-size:10px; color:var(--muted);">Routes, rate-limits, file extraction</span>
+            </div>
+            <div style="align-self:center; color:var(--primary);">━━━━▶</div>
+            <div style="width:22%; padding:10px; border:1px solid var(--accent); background:rgba(236,72,153,0.05); border-radius:8px;">
+              <strong>Gemini AI Engine</strong><br>
+              <span style="font-size:10px; color:var(--muted);">ATS grading, roadmap planning, answers audit</span>
+            </div>
+            <div style="align-self:center; color:var(--primary);">━━━━▶</div>
+            <div style="width:22%; padding:10px; border:1px solid #fff; background:rgba(255,255,255,0.03); border-radius:8px;">
+              <strong>SQLite DB</strong><br>
+              <span style="font-size:10px; color:var(--muted);">Persists users, chat history, mock logs</span>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 15px; font-size: 13.5px; text-align: center; color: var(--muted);">
+          Each request is token-verified via JWT middleware, processed asynchronously, and cached in the local SQLite engine for fast retrieval.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 10 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: FEATURE 1 - PARSING ENGINE -->
+    <div class="slide" id="slide-11">
+      <div class="slide-header">
+        <h2 class="slide-title">📂 Feature 1: PDF/DOCX Parsing Engine</h2>
+        <span class="slide-tag">Resume Digestion</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Multi-Format Support</strong>: Seamlessly reads PDF binary structures using `pdf-parse`, and extracts plain-text paragraphs from Word `DOCX` files using `mammoth`.</li>
+              <li><strong>Structured Parsing</strong>: Extracts messy resume text and passes it to the AI Parser with strict guidelines to categorize candidate details into structured sections.</li>
+              <li><strong>JSON Extraction Model</strong>: Splits profiles into Personal Info, Experience, Education, Technical/Soft Skills, Certifications, and Achievements.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>⚙️ Technical Flow</h3>
+            <p style="font-size:12px; font-family:monospace; margin-top:5px; color:#fff; background:#000; padding:6px; border-radius:4px;">
+              User Uploads -> Node intercepts File -> Extract plain text -> Send JSON Prompt to Gemini -> Return Structured JSON Profile.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 11 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 12: FEATURE 2 - ATS AUDITOR -->
+    <div class="slide" id="slide-12">
+      <div class="slide-header">
+        <h2 class="slide-title">🔍 Feature 2: ATS Diagnostic Auditor</h2>
+        <span class="slide-tag">ATS Matching</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Weighted Scoring</strong>: Computes sub-scores for Formatting, Skills, Keyword Density, Experience Depth, and Education credentials.</li>
+              <li><strong>Job Specification Alignment</strong>: Candidates paste a target Job Description to compare key qualifications.</li>
+              <li><strong>Gap Highlighting</strong>: Analyzes text to find missing key industry keywords (e.g. CI/CD, AWS) and lists them clearly.</li>
+              <li><strong>Actionable Feedback</strong>: Recommends STAR-method improvements (Situation, Task, Action, Result) for work history bullets.</li>
+            </ul>
+          </div>
+          <div class="card" style="border-left: 4px solid var(--secondary);">
+            <h3>📈 Score Weighting System</h3>
+            <p style="font-size:12.5px; line-height:1.4;">
+              Scores are calculated dynamically by comparing extracted resume skills with key terms in the Job Description, helping candidates see exactly why a resume might be filtered out.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 12 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 13: FEATURE 3 - SMART BUILDER -->
+    <div class="slide" id="slide-13">
+      <div class="slide-header">
+        <h2 class="slide-title">📝 Feature 3: Smart Resume Builder</h2>
+        <span class="slide-tag">Interactive Editor</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Dynamic UI Forms</strong>: Custom-built form layout connected to Angular form controls for editing Personal Info, Work History, and Education.</li>
+              <li><strong>AI-Assisted Improvement Suggestions</strong>: The editor provides a "suggest improvements" button next to fields to rewrite bullets with better action verbs.</li>
+              <li><strong>Automatic Versioning</strong>: Saving changes creates a new version in `resume_versions`, preserving history so you can restore past edits.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>🔄 Version Architecture</h3>
+            <p style="font-size: 12.5px; line-height:1.4;">
+              Each save commits a JSON string of the resume model to the `resume_json` column. This enables instant version history tracking without creating duplicate database rows.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 13 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 14: FEATURE 4 - ROADMAPS -->
+    <div class="slide" id="slide-14">
+      <div class="slide-header">
+        <h2 class="slide-title">📅 Feature 4: Career Coach & Roadmaps</h2>
+        <span class="slide-tag">Structured Learning</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Specific Track Roadmaps</strong>: Specialized tracks for DevOps, Full Stack, Cloud Computing, AI, and Cybersecurity.</li>
+              <li><strong>30/60/90-Day Schedules</strong>: Generates concrete weekly milestones divided into Foundations, Pipelines, and Scale phases.</li>
+              <li><strong>Specific Project Recommender</strong>: Recommends hands-on projects (e.g. "Build a Dockerized REST API with CI/CD") to practice skills.</li>
+              <li><strong>Active Gap Audits</strong>: Highlights skills requested in the track that are missing from your resume.</li>
+            </ul>
+          </div>
+          <div class="card" style="border-left: 4px solid var(--accent);">
+            <h3>🎯 Goal-Oriented Learning</h3>
+            <p style="font-size:12.5px; line-height:1.4;">
+              Helps candidates transition from passive learning to building portfolio projects, boosting resume strength with the missing keywords.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 14 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 15: FEATURE 5 - VOICE SIMULATOR -->
+    <div class="slide" id="slide-15">
+      <div class="slide-header">
+        <h2 class="slide-title">🎙️ Feature 5: AI Voice Interview Simulator</h2>
+        <span class="slide-tag">Speech & AI Evaluation</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Audio Recording Controls</strong>: HTML5 Web Audio API records user answers directly in the browser.</li>
+              <li><strong>Speech-to-Text Conversion</strong>: Transcribes audio into text for analysis.</li>
+              <li><strong>Multi-Dimensional Scoring</strong>: Evaluates answers on communication clarity, confidence level, and technical accuracy.</li>
+              <li><strong>Actionable Feedback Feed</strong>: Shows strengths, weaknesses, and a perfect sample answer structure.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>⚡ Interview Categories</h3>
+            <div class="badges-container">
+              <span class="badge badge-highlight">HR Answering</span>
+              <span class="badge badge-highlight">Technical Theory</span>
+              <span class="badge">Scenario Handling</span>
+              <span class="badge">Behavioral (STAR)</span>
+            </div>
+            <p style="margin-top:10px; font-size:12.5px;">
+              Questions are tailored directly to the candidate's resume history and target role for realistic practice.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 15 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 16: FEATURE 6 - MENTOR CHATBOT -->
+    <div class="slide" id="slide-16">
+      <div class="slide-header">
+        <h2 class="slide-title">💬 Feature 6: AI Career Mentor Chatbot</h2>
+        <span class="slide-tag">Interactive Mentorship</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Context-Aware Bot</strong>: The bot reads your resume JSON and ATS reports to answer career questions with personalized context.</li>
+              <li><strong>Persistent Chat logs</strong>: Chats are saved in `chatbot_conversations` and `chatbot_messages` tables so you can resume sessions.</li>
+              <li><strong>Strategic Advice</strong>: Provides guidance on salary negotiations, interview prep, and learning strategies.</li>
+            </ul>
+          </div>
+          <div class="card" style="border-left: 4px solid var(--secondary);">
+            <h3>🧠 Context Prompt Injection</h3>
+            <p style="font-size:12px; font-family:monospace; margin-top:5px; color:#fff; background:#000; padding:6px; border-radius:4px;">
+              Prompt: "Candidate Name is [X]. Resume Skills: [Y]. Latest ATS Score: [Z]. Answer their question: [Query]"
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 16 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 17: FEATURE 7 - RECRUITER & ADMIN -->
+    <div class="slide" id="slide-17">
+      <div class="slide-header">
+        <h2 class="slide-title">👥 Feature 7: Recruiter & Admin Portals</h2>
+        <span class="slide-tag">Management Systems</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card">
+            <h3>📊 1. Candidate Ranking</h3>
+            <p>Recruiters can rank all resumes in the database against job requirements instantly, saving hours of manual screening.</p>
+          </div>
+          <div class="card">
+            <h3>⚙️ 2. Platform Telemetry</h3>
+            <p>Admin panel tracks overall usage stats, user counts, parsing logs, and database metrics in a centralized view.</p>
+          </div>
+          <div class="card">
+            <h3>🛡️ 3. Role Access Control</h3>
+            <p>Uses middleware guards (`roleGuard`) to restrict Recruiter and Admin endpoints, securing user data.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 17 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 18: DATABASE SCHEMA & TABLES -->
+    <div class="slide" id="slide-18">
+      <div class="slide-header">
+        <h2 class="slide-title">🗃️ Database Table Definitions</h2>
         <span class="slide-tag">Data Layer</span>
       </div>
       <div class="slide-body">
         <div class="grid-2">
           <div>
             <ul class="points-list">
-              <li><strong>Users Table</strong>: Stores registration detail, role flags (user, recruiter, admin) and password hashes.</li>
-              <li><strong>Resumes & Versions</strong>: Holds the parsed text, PDF uploads, and historical versions of edits.</li>
-              <li><strong>ATS Reports Table</strong>: Links to resumes and stores score arrays, formatting evaluations, and missing keywords in JSON.</li>
-              <li><strong>Interview Tables</strong>: Track session stats, scores, question texts, and transcripted answers with voice metrics feedback.</li>
+              <li><strong>resumes</strong>: Tracks user files, original filenames, paths, and extracted text.</li>
+              <li><strong>ats_reports</strong>: Stores formatting and overall scores with JSON lists of missing keywords.</li>
+              <li><strong>interview_sessions / answers</strong>: Tracks session details, question texts, recorded responses, and AI feedback.</li>
+              <li><strong>chatbot_messages</strong>: Keeps track of conversation histories for the mentor chat.</li>
             </ul>
           </div>
-          <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid var(--border);">
-            <div style="font-family: monospace; font-size: 11px; color: var(--muted); line-height: 1.4;">
-              <span style="color: var(--secondary);">-- SQLite / MySQL Unified Migration Scheme</span><br>
-              CREATE TABLE users (id INTEGER PRIMARY KEY, email UNIQUE, password_hash);<br>
-              CREATE TABLE resumes (id INTEGER PRIMARY KEY, user_id, extracted_text);<br>
-              CREATE TABLE ats_reports (id INTEGER PRIMARY KEY, resume_id, overall_score);<br>
-              CREATE TABLE interview_sessions (id INTEGER, user_id, overall_score, feedback_json);
+          <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 10px; border: 1px solid var(--border);">
+            <div style="font-family: monospace; font-size: 10.5px; color: var(--muted); line-height: 1.4;">
+              CREATE TABLE resumes (<br>
+              &nbsp;&nbsp;id INTEGER PRIMARY KEY AUTOINCREMENT,<br>
+              &nbsp;&nbsp;user_id INTEGER NOT NULL,<br>
+              &nbsp;&nbsp;title VARCHAR(255),<br>
+              &nbsp;&nbsp;extracted_text TEXT<br>
+              );<br>
+              CREATE TABLE ats_reports (<br>
+              &nbsp;&nbsp;id INTEGER PRIMARY KEY,<br>
+              &nbsp;&nbsp;resume_id INTEGER,<br>
+              &nbsp;&nbsp;overall_score INTEGER,<br>
+              &nbsp;&nbsp;missing_keywords_json TEXT<br>
+              );
             </div>
           </div>
         </div>
       </div>
       <div class="slide-footer">
         <div class="slide-footer-left">AI Resume Analyzer</div>
-        <div>Slide 6 / 12</div>
+        <div>Slide 18 / 25</div>
       </div>
     </div>
 
-    <!-- SLIDE 7: AI INTEGRATION DETAILS -->
-    <div class="slide" id="slide-7">
+    <!-- SLIDE 19: END-TO-END DATAFLOW -->
+    <div class="slide" id="slide-19">
       <div class="slide-header">
-        <h2 class="slide-title">🧠 Google Gemini AI Integration</h2>
-        <span class="slide-tag">AI Layer</span>
+        <h2 class="slide-title">🔄 End-to-End Processing Dataflow</h2>
+        <span class="slide-tag">Sequence Flow</span>
+      </div>
+      <div class="slide-body">
+        <div style="display:flex; justify-content:space-between; text-align:center; font-size:13px; font-family:monospace;">
+          <div style="width:18%; padding:8px; border:1px solid var(--secondary); background:rgba(0,242,254,0.03); border-radius:6px;">
+            1. Upload<br><span style="font-size:9px; color:var(--muted);">Candidate uploads PDF/Word</span>
+          </div>
+          <div style="align-self:center; color:var(--primary);">▶</div>
+          <div style="width:18%; padding:8px; border:1px solid var(--primary); background:rgba(139,92,246,0.03); border-radius:6px;">
+            2. Parse<br><span style="font-size:9px; color:var(--muted);">Extract text & build JSON</span>
+          </div>
+          <div style="align-self:center; color:var(--primary);">▶</div>
+          <div style="width:18%; padding:8px; border:1px solid var(--accent); background:rgba(236,72,153,0.03); border-radius:6px;">
+            3. Evaluate<br><span style="font-size:9px; color:var(--muted);">Gemini audits ATS metrics</span>
+          </div>
+          <div style="align-self:center; color:var(--primary);">▶</div>
+          <div style="width:18%; padding:8px; border:1px solid #fff; background:rgba(255,255,255,0.02); border-radius:6px;">
+            4. Mock Prep<br><span style="font-size:9px; color:var(--muted);">Practice voice questions</span>
+          </div>
+          <div style="align-self:center; color:var(--primary);">▶</div>
+          <div style="width:18%; padding:8px; border:1px solid var(--secondary); background:rgba(0,242,254,0.03); border-radius:6px;">
+            5. Roadmap<br><span style="font-size:9px; color:var(--muted);">Learn missing skills</span>
+          </div>
+        </div>
+        <p style="margin-top:20px; font-size:13.5px; text-align:center; color:var(--muted);">
+          Each step is tracked in SQLite, providing a personalized dashboard history every time you log in.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 19 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 20: SECURITY & PROTECTION -->
+    <div class="slide" id="slide-20">
+      <div class="slide-header">
+        <h2 class="slide-title">🛡️ Security, Protection & Rate Limiting</h2>
+        <span class="slide-tag">Secure Backend</span>
       </div>
       <div class="slide-body">
         <div class="grid-2">
           <div>
             <ul class="points-list">
-              <li><strong>Model Used</strong>: `gemini-1.5-flash` for high-speed, cost-efficient, and accurate text processing.</li>
-              <li><strong>Structured Output</strong>: Prompts are engineered to return strict JSON syntax, which is safely parsed by the backend:
-                <code style="display:block; padding: 6px; background:#000; font-size:11px; margin-top:8px; border-radius:4px; color:#fff;">{ "overallScore": 85, "weaknesses": [...] }</code>
+              <li><strong>JWT authentication</strong>: Protects user routes. Access and refresh tokens manage user sessions securely.</li>
+              <li><strong>API Security</strong>: Helmet secures HTTP headers, and CORS limits cross-origin access.</li>
+              <li><strong>Rate-Limiter Protection</strong>: Restricts IPs to a maximum of 200 requests per 15 minutes to prevent abuse:
+                <code style="display:block; font-size:11px; padding:6px; background:#000; border-radius:4px; margin-top:6px; color:#fff;">windowMs: 15 * 60 * 1000, max: 200</code>
               </li>
-              <li><strong>Context Management</strong>: For the Mentor Chatbot, complete conversation history + user resume JSON is fed to Gemini to generate custom advice.</li>
-            </ul>
-          </div>
-          <div>
-            <div class="card" style="border-left: 4px solid var(--secondary);">
-              <h3>🎭 Robust Error Handling</h3>
-              <p>The code uses safe JSON cleaning regex methods (`.replace(/^```json/i, '')`) to extract data from raw markdown envelopes returned by the AI model. Includes structured try/catch modules with safe static mock backups.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="slide-footer">
-        <div class="slide-footer-left">AI Resume Analyzer</div>
-        <div>Slide 7 / 12</div>
-      </div>
-    </div>
-
-    <!-- SLIDE 8: FRONTEND DESIGN & STYLING -->
-    <div class="slide" id="slide-8">
-      <div class="slide-header">
-        <h2 class="slide-title">🎨 Premium UI/UX & Glassmorphism</h2>
-        <span class="slide-tag">Visuals</span>
-      </div>
-      <div class="slide-body">
-        <div class="grid-2">
-          <div>
-            <ul class="points-list">
-              <li><strong>Theme</strong>: Sleek dark-mode system with harmonious violet and cyan neon gradients.</li>
-              <li><strong>Glassmorphism UI</strong>: Translucent cards utilizing modern CSS backdrop-filters:
-                <code style="display:inline-block; font-size:12px; color:var(--secondary); background:#000; padding:2px 6px; margin:4px 0; border-radius:4px;">backdrop-filter: blur(16px);</code>
-              </li>
-              <li><strong>Micro-animations</strong>: Custom keyframe animations for:
-                <ul style="padding-left:15px; font-size:14px; color:var(--muted); list-style:circle;">
-                  <li>Active voice waveforms.</li>
-                  <li>Floating background particles.</li>
-                  <li>Shifting borders and glowing card interactions.</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>🚀 Dynamic Styling</h3>
-            <p>Tailwind CSS is used to enable responsive, mobile-first flexbox grids. Standard typography utilizes Google Fonts (Outfit and Inter) for a premium presentation feel.</p>
-          </div>
-        </div>
-      </div>
-      <div class="slide-footer">
-        <div class="slide-footer-left">AI Resume Analyzer</div>
-        <div>Slide 8 / 12</div>
-      </div>
-    </div>
-
-    <!-- SLIDE 9: SCREENSHOTS - DASHBOARD -->
-    <div class="slide" id="slide-9">
-      <div class="slide-header">
-        <h2 class="slide-title">🖼️ Interface Preview - Dashboard</h2>
-        <span class="slide-tag">UI Screen 1</span>
-      </div>
-      <div class="slide-body">
-        <div class="grid-2">
-          <div>
-            <p style="font-size: 15px; line-height: 1.6; color: var(--muted); margin-bottom: 15px;">
-              The main portal dashboard features real-time dynamic statistics, aggregated ATS metrics, list of uploads, and a visual progress indicator.
-            </p>
-            <ul class="points-list">
-              <li>Quick summary widgets showing overall career stats.</li>
-              <li>Recent resume history log list.</li>
-              <li>Interactive links to jump directly to Mock practice or roadmaps.</li>
-            </ul>
-          </div>
-          <div class="slide-img-container">
-            <img src="screenshots/dashboard.png" alt="Dashboard Preview">
-          </div>
-        </div>
-      </div>
-      <div class="slide-footer">
-        <div class="slide-footer-left">AI Resume Analyzer</div>
-        <div>Slide 9 / 12</div>
-      </div>
-    </div>
-
-    <!-- SLIDE 10: SCREENSHOTS - ANALYZER -->
-    <div class="slide" id="slide-10">
-      <div class="slide-header">
-        <h2 class="slide-title">🖼️ Interface Preview - ATS Analyzer</h2>
-        <span class="slide-tag">UI Screen 2</span>
-      </div>
-      <div class="slide-body">
-        <div class="grid-2">
-          <div>
-            <p style="font-size: 15px; line-height: 1.6; color: var(--muted); margin-bottom: 15px;">
-              The Analyzer page processes resumes and presents grading lists in an easy-to-understand grid format.
-            </p>
-            <ul class="points-list">
-              <li><strong>Drag & Drop Zone</strong>: Upload PDFs and DOCX files securely.</li>
-              <li><strong>Missing Keywords Audit</strong>: Flags words present in the Job Description but absent in the resume.</li>
-              <li><strong>Weaknesses Feed</strong>: Explains formatting errors or phrasing gaps.</li>
-            </ul>
-          </div>
-          <div class="slide-img-container">
-            <img src="screenshots/analyzer.png" alt="Analyzer Preview">
-          </div>
-        </div>
-      </div>
-      <div class="slide-footer">
-        <div class="slide-footer-left">AI Resume Analyzer</div>
-        <div>Slide 10 / 12</div>
-      </div>
-    </div>
-
-    <!-- SLIDE 11: FUTURE ENHANCEMENTS -->
-    <div class="slide" id="slide-11">
-      <div class="slide-header">
-        <h2 class="slide-title">🔮 Future Scope & Enhancements</h2>
-        <span class="slide-tag">Roadmap</span>
-      </div>
-      <div class="slide-body">
-        <div class="grid-2">
-          <div>
-            <ul class="points-list">
-              <li><strong>Video Mock Interviews</strong>: Using facial expressions and emotion analysis APIs to score body language and posture during mock rounds.</li>
-              <li><strong>Direct Job Post Scraping</strong>: Scraping job boards automatically to find matches in real-time.</li>
-              <li><strong>Browser Extension</strong>: A Chrome extension that lets users audit their resumes directly on LinkedIn or Indeed job pages.</li>
-              <li><strong>Enterprise Recruiter Tools</strong>: Bulk import and export features for HR departments.</li>
             </ul>
           </div>
           <div class="card" style="border-left: 4px solid var(--accent);">
-            <h3>🎯 Ultimate Vision</h3>
-            <p>Transforming this into a unified career center platform that not only points out gaps but automatically connects candidates to courses and hiring partners.</p>
+            <h3>🔒 SQL Injection & XSS Shield</h3>
+            <p style="font-size:12.5px; line-height:1.4;">
+              All database queries use parameterized placeholders (`?`) to prevent SQL injection. File uploads are validated to block unauthorized formats.
+            </p>
           </div>
         </div>
       </div>
       <div class="slide-footer">
         <div class="slide-footer-left">AI Resume Analyzer</div>
-        <div>Slide 11 / 12</div>
+        <div>Slide 20 / 25</div>
       </div>
     </div>
 
-    <!-- SLIDE 12: CONCLUSION -->
-    <div class="slide" id="slide-12">
-      <div class="slide-body title-slide">
-        <h2 style="font-family: 'Outfit', sans-serif; font-size: 44px; font-weight: 900; background: linear-gradient(135deg, #fff 30%, var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-          Thank You!
-        </h2>
-        <p class="sub-title">Questions & Answers Session</p>
-        <div style="font-size: 15px; color: var(--muted); margin-top: 20px;">
-          👨‍💻 <strong>AI Resume Analyzer & Career Intelligence Platform</strong><br>
-          An Innovative Step Towards Smart Career Preparation.
+    <!-- SLIDE 21: UI PREVIEW - DASHBOARD -->
+    <div class="slide" id="slide-21">
+      <div class="slide-header">
+        <h2 class="slide-title">🖼️ UI Preview: Core Dashboard</h2>
+        <span class="slide-tag">Interface 1</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <p style="font-size:14.5px; line-height:1.5; color:var(--muted); margin-bottom:12px;">
+              The landing dashboard displays parsed user stats, resume history, and career roadmaps in a modern dark theme.
+            </p>
+            <ul class="points-list">
+              <li>Responsive glassmorphic stats widgets.</li>
+              <li>Clean list view of uploaded resume versions.</li>
+              <li>Quick navigation to mock practice modules.</li>
+            </ul>
+          </div>
+          <div class="slide-img-container">
+            <img src="screenshots/dashboard.png" alt="Dashboard Screen">
+          </div>
         </div>
       </div>
       <div class="slide-footer">
         <div class="slide-footer-left">AI Resume Analyzer</div>
-        <div>Slide 12 / 12</div>
+        <div>Slide 21 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 22: UI PREVIEW - ANALYZER -->
+    <div class="slide" id="slide-22">
+      <div class="slide-header">
+        <h2 class="slide-title">🖼️ UI Preview: Resume Analyzer</h2>
+        <span class="slide-tag">Interface 2</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <p style="font-size:14.5px; line-height:1.5; color:var(--muted); margin-bottom:12px;">
+              Shows ATS scores, identified skills, formatting critiques, and missing keyword breakdowns.
+            </p>
+            <ul class="points-list">
+              <li>Drag-and-drop file upload zone.</li>
+              <li>Missing keywords highlighted in red.</li>
+              <li>Actionable bullet point improvement tips.</li>
+            </ul>
+          </div>
+          <div class="slide-img-container">
+            <img src="screenshots/analyzer.png" alt="Analyzer Screen">
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 22 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 23: UI PREVIEW - VOICE SIMULATOR -->
+    <div class="slide" id="slide-23">
+      <div class="slide-header">
+        <h2 class="slide-title">🖼️ UI Preview: Voice Simulator</h2>
+        <span class="slide-tag">Interface 3</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <p style="font-size:14.5px; line-height:1.5; color:var(--muted); margin-bottom:12px;">
+              Live speech simulation module showing question lists, recording state, and transcript evaluations.
+            </p>
+            <ul class="points-list">
+              <li>Bouncing audio waveform visualizer.</li>
+              <li>Real-time speech-to-text transcript panel.</li>
+              <li>Detailed scoring breakdown for confidence and fluency.</li>
+            </ul>
+          </div>
+          <div class="slide-img-container">
+            <img src="screenshots/voice.png" alt="Voice Simulator Screen">
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 23 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 24: KEY BENEFITS -->
+    <div class="slide" id="slide-24">
+      <div class="slide-header">
+        <h2 class="slide-title">🎁 Key Benefits & Project Advantages</h2>
+        <span class="slide-tag">Value Proposition</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card">
+            <h3>📈 Higher Success Rates</h3>
+            <p>Optimizing resume keywords and formatting boosts the chances of passing automated recruitment filters.</p>
+          </div>
+          <div class="card">
+            <h3>⏱️ Saves Hours of Prep</h3>
+            <p>Instead of manual research, candidates get custom roadmaps and mock interviews in seconds.</p>
+          </div>
+          <div class="card">
+            <h3>👥 Smart Recruiter Screening</h3>
+            <p>Allows recruiters to parse and rank candidate lists instantly, simplifying selection workflows.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 24 / 25</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 25: FUTURE ROADMAP & CONCLUSION -->
+    <div class="slide" id="slide-25">
+      <div class="slide-header">
+        <h2 class="slide-title">🔮 Future Scope & Conclusion</h2>
+        <span class="slide-tag">The End</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <ul class="points-list">
+              <li><strong>Future Scope</strong>: Multi-lingual resume parsing, automated job matching via active scraping, browser extension, and video-based emotion coaching.</li>
+              <li><strong>Conclusion</strong>: The AI Resume Analyzer successfully replaces generic static builders with an intelligent, interactive career mentor.</li>
+            </ul>
+          </div>
+          <div class="card" style="border-left: 4px solid var(--secondary); text-align:center; padding: 25px 15px;">
+            <h2 style="font-family: 'Outfit'; font-size:24px; color:#fff;">Thank You!</h2>
+            <p style="margin-top:8px;">Questions & Discussion Session</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <div class="slide-footer-left">AI Resume Analyzer</div>
+        <div>Slide 25 / 25</div>
       </div>
     </div>
 
   </div>
 
-  <!-- Slide Navigation Controls -->
+  <!-- Navigation Buttons controls -->
   <div class="controls">
     <button class="nav-btn" onclick="prevSlide()">◀</button>
-    <div class="slide-indicator" id="indicator">1 / 12</div>
+    <div class="slide-indicator" id="indicator">1 / 25</div>
     <button class="nav-btn" onclick="nextSlide()">▶</button>
   </div>
 
   <script>
     let currentSlide = 1;
-    const totalSlides = 12;
+    const totalSlides = 25;
 
     function showSlide(slideIndex) {
       if (slideIndex < 1 || slideIndex > totalSlides) return;
@@ -814,7 +1283,7 @@
       }
     }
 
-    // Keyboard navigation
+    // Keyboard navigation handlers
     document.addEventListener('keydown', function(event) {
       if (event.key === 'ArrowRight' || event.key === ' ') {
         nextSlide();
